@@ -1,0 +1,14 @@
+﻿@using WebApp.Const
+@using WebApp.Resource
+@model WebApp.Models.OrderCreatedModel
+
+<!-- Page Content -->
+   <div class="row">
+      <div class="col-lg-12 text-center">
+         <h3 class="mt-5">@Plain.VehicleConfiguratorH1</h3>
+         <p>@Plain.OrderChanged
+            @Html.ActionLink(Plain.EditOrderLink, ActionNames.Order.Edit, ControllerNames.Order, new {id=Model.Id}, null)
+         </p>
+      </div>
+   </div>
+ 

@@ -1,0 +1,58 @@
+﻿@using System.Web.Optimization
+@using WebApp.Config
+@using WebApp.Const
+@using WebApp.Resource
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render(new WebApp.Config.Theme().CssFileName)
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+<div class="container body-content">
+   @RenderSection("featured", required: false)
+
+   @* Error & warnings area *@
+   <div class="alert alert-danger" role="alert" id="main-error" style="display:none"></div>
+   <div class="alert alert-warning" role="alert" id="main-warning" style="display:none"></div>
+
+   @RenderBody()
+   <hr/>
+   <footer>
+      <p>&copy; @DateTime.Now.Year - Vehicle configurator</p>
+      @Html.ActionLink(Plain.ThemeDark, ActionNames.Theme.Index, ControllerNames.Theme, new {id = Theme.ConfiguratorThemeId.Dark}, null)&nbsp;
+      -
+      @Html.ActionLink(Plain.ThemeLight, ActionNames.Theme.Index, ControllerNames.Theme, new {id = Theme.ConfiguratorThemeId.Light}, null)&nbsp;
+   </footer>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/knockout")
+<script type="text/javascript">
+   //show/hide warning text
+   showWarning = function (text) {
+      $("#main-warning").html($("#main-warning").html() + "<br>" +text);
+      $("#main-warning").show();
+   };
+   hideWarning = function () {
+      $("#main-warning").hide();
+      $("#main-warning").html("");
+   };
+   //show/hide error text
+   showError = function (text) {
+      $("#main-error").html($("#main-error").html()+"<br>"+text);
+      $("#main-error").show();
+   };
+   hideError = function () {
+      $("#main-error").hide();
+      $("#main-error").html("");
+   };
+</script>
+@RenderSection("scripts", required: false)
+</body>
+</html>

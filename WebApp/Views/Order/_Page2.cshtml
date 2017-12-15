@@ -1,0 +1,12 @@
+﻿@using WebApp.Resource
+@* page 2: input client name  *@
+<div class="container" data-bind="visible:page2Visible">
+   <div class="row">
+      <div class="col-xs-3">@Plain.ClientName</div>
+      <div class="col-xs-3"><input type="text" data-bind="value:CustomerName">
+      </div>
+   </div>
+</div>
+
+<button class="btn btn-primary" data-bind="visible: page2Visible, click: btnReturn1Click">@Plain.BtnReturn</button>
+<button class="btn btn-primary" data-bind="visible: page2Visible, click: btnNext2Click">@Plain.BtnNext</button>

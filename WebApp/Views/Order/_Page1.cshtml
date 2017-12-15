@@ -1,0 +1,22 @@
+﻿@using WebApp.Resource
+@* page 1: configure  *@
+<div id="exTab1" class="container" data-bind="visible:page1Visible">
+   <ul class="nav nav-pills">
+      <li class="active"><a href="#1a" data-toggle="tab">@Plain.Car</a></li>
+      <li><a href="#2a" data-toggle="tab">@Plain.Engine</a></li>
+      <li><a href="#3a" data-toggle="tab">@Plain.Rims</a></li>
+      <li><a href="#4a" data-toggle="tab">@Plain.Color</a></li>
+      <li><a href="#5a" data-toggle="tab">@Plain.Equipment</a></li>
+   </ul>
+
+   <div class="tab-content clearfix">
+      <div class="tab-pane active" id="1a" data-bind="template: { name: 'cars-template', foreach: Cars }"></div>
+      <div class="tab-pane" id="2a" data-bind="template: { name: 'engines-template', foreach: Engines }"></div>
+      <div class="tab-pane" id="3a" data-bind="template: { name: 'rims-template', foreach: Rims }"></div>
+      <div class="tab-pane" id="4a" data-bind="template: { name: 'colors-template', foreach: Colors }"></div>
+      <div class="tab-pane" id="5a" data-bind="template: { name: 'eqipment-items-template', foreach: EquipmentItems }"></div>
+   </div>
+   <p class="total-price"> @(Plain.TotalPrice)&nbsp;<strong data-bind="text:totalPrice"></strong>&nbsp;@Plain.CurrencySymbol</p>
+</div>
+
+<button class="btn btn-primary" data-bind="visible: page1Visible, click: btnNext1Click">@Plain.BtnNext</button>

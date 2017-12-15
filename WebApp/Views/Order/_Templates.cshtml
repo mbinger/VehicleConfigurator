@@ -1,0 +1,60 @@
+﻿@using WebApp.Resource
+@model  WebApp.Models.CreateEditTemplatesModel
+  <script type="text/html" id="cars-template">
+      <label class="image-radio" data-bind="css: { checked: $parent.isRadioChecked(Id, '@Model.RadioGroupCars')}">
+         <label class="name" data-bind="text: Description"></label><br>
+         <label class="name" data-bind="text: Year"></label><br>
+         <label class="price" data-bind="text: Price"></label> @Plain.CurrencySymbol<br>
+         <input type="radio" name="@Model.RadioGroupCars" data-bind="value:Id, checked:$parent.CarId"/>
+         <img data-bind="attr: { src: ImageUrl }">
+      </label>
+   </script>
+
+   <script type="text/html" id="engines-template">
+      <label class="image-radio" data-bind="css: { checked: $parent.isRadioChecked(Id, '@Model.RadioGroupEngines')}">
+         <label class="name" data-bind="text: Description"></label><br>
+         <label class="name" data-bind="text: FuelType.Name"></label><br>
+         <label class="price" data-bind="text: Price"></label> @Plain.CurrencySymbol<br>
+         <input type="radio" name="@Model.RadioGroupEngines" data-bind="value:Id, checked:$parent.EngineId"/>
+         <img data-bind="attr: { src: ImageUrl }">
+      </label>
+   </script>
+
+   <script type="text/html" id="rims-template">
+      <label class="image-radio" data-bind="css: { checked: $parent.isRadioChecked(Id, '@Model.RadioGroupRims')}">
+         <label class="name" data-bind="text: Description"></label><br>
+         <label class="name" data-bind="text: Type.Name"></label><br>
+         <label class="price" data-bind="text: Price"></label> @Plain.CurrencySymbol<br>
+         <input type="radio" name="@Model.RadioGroupRims" data-bind="value:Id, checked:$parent.RimId"/>
+         <img data-bind="attr: { src: ImageUrl }">
+      </label>
+   </script>
+
+   <script type="text/html" id="colors-template">
+      <label class="image-radio" data-bind="css: { checked: $parent.isRadioChecked(Id, '@Model.RadioGroupColors')}">
+         <label class="name" data-bind="text: Description"></label><br>
+         <label class="name" data-bind="text: Type.Name"></label><br>
+         <label class="price" data-bind="text: Price"></label> @Plain.CurrencySymbol<br>
+         <input type="radio" name="@Model.RadioGroupColors" data-bind="value:Id, checked:$parent.ColorId"/>
+         <img class="color" data-bind="style: { backgroundColor: Value }"/>
+      </label>
+   </script>
+
+   <script type="text/html" id="eqipment-items-template">
+      <label class="image-radio" data-bind="css: { checked: $parent.isRadioChecked(Id, '@Model.RadioGroupEq')}">
+         <label class="name" data-bind="text: Description"></label><br>
+         <label class="name" data-bind="text: Category"></label><br>
+         <label class="price" data-bind="text: Price"></label> @Plain.CurrencySymbol<br>
+         <input type="checkbox" name="@Model.RadioGroupRims" data-bind="value:Id, checked:$parent.EquipmentIds"/>
+         <img data-bind="attr: { src: ImageUrl }">
+      </label>
+   </script>
+
+   <script type="text/html" id="current-eqipment-item-template">
+      <div class="row">
+         <div class="col-xs-3"><span data-bind="text:Category"></span></div>
+         <div class="col-xs-3"><label data-bind="text:Name"></label>
+         </div>
+         <div class="col-xs-3"><label data-bind="text:Price"></label>&nbsp;@Plain.CurrencySymbol</div>
+      </div>
+   </script>

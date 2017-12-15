@@ -1,0 +1,55 @@
+﻿@using WebApp.Const
+@using WebApp.Models
+@using WebApp.Resource
+@model WebApp.Models.CreateEditOrderModel
+
+@* Header *@
+<div class="row">
+   <div class="col-lg-12 text-center">
+      <h3 class="mt-5">@Plain.VehicleConfiguratorH1</h3>
+   </div>
+</div>
+
+@* Loading indicator *@
+<div id="div-loading" class="">
+   <div class="col-lg-12 text-center">
+      <div class="mt-5">@(Plain.Loading)&nbsp;<div class="load-indicator-image"></div></div>
+   </div>
+</div>
+
+<div id="div-main" style="display: none">
+   @Html.Partial(ViewNames.Order.Page1)
+
+   @Html.Partial(ViewNames.Order.Page2)
+
+   @Html.Partial(ViewNames.Order.Page3)
+</div>
+
+@{
+   var templatesModel = new CreateEditTemplatesModel
+   {
+      RadioGroupCars = "radioGroupCars",
+      RadioGroupEngines = "radioGroupEngines",
+      RadioGroupRims = "radioGroupRims",
+      RadioGroupColors = "radioGroupColors",
+      RadioGroupEq = "radioGroupEq"
+   };
+
+   var viewModel = new CreateEditOrderViewModelModel
+   {
+      Base = Model,
+      ImagesPath = Url.Content("~/Content/configurator/"),
+      TemplatesModel = templatesModel
+   };
+}
+
+@section Scripts {
+
+   @Scripts.Render("~/bundles/configurator")
+   @Scripts.Render("~/bundles/jqueryval")
+   @Scripts.Render("~/bundles/configurator")
+
+   @Html.Partial(ViewNames.Order.Templates, templatesModel)
+
+   @Html.Partial(ViewNames.Order.ViewModel, viewModel)
+}

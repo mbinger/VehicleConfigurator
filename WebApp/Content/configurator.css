@@ -1,0 +1,48 @@
+﻿.image-radio {
+   display: inline-block;
+   cursor: pointer;
+   background-color: lightgray;
+   padding: 10px;
+   margin: 10px;
+   border-radius: 10px;
+}
+
+.image-radio.checked {
+   background-color: #88b9ec;
+}
+
+.image-radio input[type="radio"],
+.image-radio input[type="checkbox"] {
+   display: none;
+}
+
+.image-radio img {
+   max-width: 156px;
+   max-height: 107px;
+}
+
+.image-radio .color {
+   display: inline-block;
+   width: 156px;
+   height: 107px;
+}
+
+
+.load-indicator-image {
+   display: inline-block;
+   width: 32px;
+   height: 32px;
+   background-image: url("../themes/base/images/ajax-loader.gif");
+}
+
+@media screen and (max-width: 600px) {
+   .image-radio img {
+      max-width: 64px;
+      max-height: 64px;
+   }
+
+   .image-radio .color {
+      max-width: 64px;
+      max-height: 64px;
+   }
+}

@@ -1,0 +1,53 @@
+﻿@using WebApp.Resource
+@* page 3: summary  *@
+<div class="container" data-bind="visible:page3Visible">
+   <div class="row">
+      <div class="col-xs-3">@Plain.Car</div>
+      <div class="col-xs-3"><label data-bind="text:currentCar().Name"></label>
+      </div>
+      <div class="col-xs-3"><label data-bind="text:currentCar().Price"></label>&nbsp;@Plain.CurrencySymbol</div>
+   </div>
+   <div class="row">
+      <div class="col-xs-3">@Plain.Engine</div>
+      <div class="col-xs-3"><label data-bind="text:currentEngine().Name"></label>
+      </div>
+      <div class="col-xs-3"><label data-bind="text:currentEngine().Price"></label>&nbsp;@Plain.CurrencySymbol</div>
+   </div>
+   <div class="row">
+      <div class="col-xs-3">@Plain.Rims</div>
+      <div class="col-xs-3"><label data-bind="text:currentRim().Name"></label>
+      </div>
+      <div class="col-xs-3"><label data-bind="text:currentRim().Price"></label>&nbsp;@Plain.CurrencySymbol</div>
+   </div>
+   <div class="row">
+      <div class="col-xs-3">@Plain.Color</div>
+      <div class="col-xs-3"><label data-bind="text:currentColor().Name"></label>
+      </div>
+      <div class="col-xs-3"><label data-bind="text:currentColor().Price"></label>&nbsp;@Plain.CurrencySymbol</div>
+   </div>
+   <div data-bind="template: { name: 'current-eqipment-item-template', foreach: currentEquiment() }"></div>
+   <div class="row">
+      <div class="col-xs-3">&nbsp;</div>
+   </div>
+   <div class="row">
+      <div class="col-xs-3">@Plain.TotalPrice</div>
+      <div class="col-xs-3">&nbsp;</div>
+      <div class="col-xs-3"><mark><label data-bind="text:totalPrice"></label>&nbsp;@Plain.CurrencySymbol</mark>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-xs-3">&nbsp;</div>
+   </div>
+   <div class="row">
+      <div class="col-xs-3">@Plain.CustomerName</div>
+      <div class="col-xs-3">&nbsp;</div>
+      <div class="col-xs-3"><mark><label data-bind="text:CustomerName"></label></mark>
+      </div>
+   </div>
+</div>
+<br/>
+
+<button class="btn btn-primary" data-bind="visible: createButtonsVisible, click: btnReturn2Click, enable: CheckoutButtonsEnabled">@Plain.BtnReturn</button>
+<button class="btn btn-success" data-bind="visible: createButtonsVisible, click: btnCheckoutClick, enable: CheckoutButtonsEnabled">@Plain.BtnCheckout</button>
+<button class="btn btn-primary" data-bind="visible: editButtonsVisible, click: btnEditClick, enable: CheckoutButtonsEnabled">@Plain.BtnEdit</button>
+<button class="btn btn-success" data-bind="visible: editButtonsVisible, click: btnSaveClick, enable: CheckoutButtonsEnabled">@Plain.BtnSave</button>
