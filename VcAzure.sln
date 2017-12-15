@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VcAzure", "VcAzure\VcAzure.csproj", "{A4278EFD-F2CD-42A2-A932-225E67AC92DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "VcAzure\Service.csproj", "{A4278EFD-F2CD-42A2-A932-225E67AC92DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL.Common", "DAL.Common\DAL.Common.csproj", "{ADE1476F-BD80-41B9-B970-A21C93F42F39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{A2A424B8-43F0-4ED3-8711-A2E46209039C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{A4278EFD-F2CD-42A2-A932-225E67AC92DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4278EFD-F2CD-42A2-A932-225E67AC92DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4278EFD-F2CD-42A2-A932-225E67AC92DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADE1476F-BD80-41B9-B970-A21C93F42F39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADE1476F-BD80-41B9-B970-A21C93F42F39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADE1476F-BD80-41B9-B970-A21C93F42F39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADE1476F-BD80-41B9-B970-A21C93F42F39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2A424B8-43F0-4ED3-8711-A2E46209039C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2A424B8-43F0-4ED3-8711-A2E46209039C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2A424B8-43F0-4ED3-8711-A2E46209039C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2A424B8-43F0-4ED3-8711-A2E46209039C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
