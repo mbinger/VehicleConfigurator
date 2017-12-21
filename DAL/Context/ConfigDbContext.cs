@@ -17,7 +17,7 @@ namespace DAL.Context
    public class ConfigDbContext : DbContext
    {
 
-      private const string DefaultConnectionName = "DefaultConnection";
+      public const string DefaultConnectionName = "DefaultConnection";
 
       /// <summary>
       /// default
