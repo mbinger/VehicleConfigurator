@@ -10,6 +10,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render(new WebApp.Config.Theme().CssFileName)
     @Scripts.Render("~/bundles/modernizr")
+    @Html.Partial(ViewNames.Shared.Configuration)
 </head>
 <body>
 
@@ -23,36 +24,24 @@
    @RenderBody()
    <hr/>
    <footer>
-      <p>&copy; @DateTime.Now.Year - Vehicle configurator</p>
-      @Html.ActionLink(Plain.ThemeDark, ActionNames.Theme.Index, ControllerNames.Theme, new {id = Theme.ConfiguratorThemeId.Dark}, null)&nbsp;
-      -
-      @Html.ActionLink(Plain.ThemeLight, ActionNames.Theme.Index, ControllerNames.Theme, new {id = Theme.ConfiguratorThemeId.Light}, null)&nbsp;
-   </footer>
+       <p>@Plain.Trademark</p>
+
+       <div>
+           @Html.ActionLink(Plain.ThemeDark, ActionNames.Theme.Index, ControllerNames.Theme, new {id = Theme.ConfiguratorThemeId.Dark}, null)&nbsp;
+           &nbsp;
+           @Html.ActionLink(Plain.ThemeLight, ActionNames.Theme.Index, ControllerNames.Theme, new {id = Theme.ConfiguratorThemeId.Light}, null)&nbsp;
+           &nbsp;
+           @foreach (var language in new[] { "en", "de", "ru" })
+           {
+             <a class="language" href="#" onclick="Tools.changeLang('@language')"><img src="~/Content/languages/@(language).png" alt="@language" /></a>
+           }
+       </div>
+</footer>
 </div>
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
 @Scripts.Render("~/bundles/knockout")
-<script type="text/javascript">
-   //show/hide warning text
-   showWarning = function (text) {
-      $("#main-warning").html($("#main-warning").html() + "<br>" +text);
-      $("#main-warning").show();
-   };
-   hideWarning = function () {
-      $("#main-warning").hide();
-      $("#main-warning").html("");
-   };
-   //show/hide error text
-   showError = function (text) {
-      $("#main-error").html($("#main-error").html()+"<br>"+text);
-      $("#main-error").show();
-   };
-   hideError = function () {
-      $("#main-error").hide();
-      $("#main-error").html("");
-   };
-</script>
 @RenderSection("scripts", required: false)
 </body>
 </html>

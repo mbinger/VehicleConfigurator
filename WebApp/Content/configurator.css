@@ -35,6 +35,12 @@
    background-image: url("../themes/base/images/ajax-loader.gif");
 }
 
+a.language img {
+    width: 32px;
+    height: 25px;
+    padding: 2px;
+}
+
 @media screen and (max-width: 600px) {
    .image-radio img {
       max-width: 64px;

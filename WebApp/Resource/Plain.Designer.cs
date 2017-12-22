@@ -61,7 +61,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bestellen.
+        ///   Looks up a localized string similar to Process to checkout.
         /// </summary>
         public static string BtnCheckout {
             get {
@@ -70,7 +70,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bearbeiten.
+        ///   Looks up a localized string similar to Edit.
         /// </summary>
         public static string BtnEdit {
             get {
@@ -79,7 +79,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Weiter.
+        ///   Looks up a localized string similar to Next.
         /// </summary>
         public static string BtnNext {
             get {
@@ -88,7 +88,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zurück.
+        ///   Looks up a localized string similar to Return.
         /// </summary>
         public static string BtnReturn {
             get {
@@ -97,7 +97,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Speichern.
+        ///   Looks up a localized string similar to Save.
         /// </summary>
         public static string BtnSave {
             get {
@@ -106,7 +106,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Der REST-Dienst ist nicht erreichbar.
+        ///   Looks up a localized string similar to The REST API is not available.
         /// </summary>
         public static string CanNotConnectRestService {
             get {
@@ -115,7 +115,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fahrzeug.
+        ///   Looks up a localized string similar to Vehicle.
         /// </summary>
         public static string Car {
             get {
@@ -124,7 +124,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ihr Name.
+        ///   Looks up a localized string similar to Your name.
         /// </summary>
         public static string ClientName {
             get {
@@ -133,7 +133,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lackierung.
+        ///   Looks up a localized string similar to Color.
         /// </summary>
         public static string Color {
             get {
@@ -142,7 +142,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to €.
+        ///   Looks up a localized string similar to $.
         /// </summary>
         public static string CurrencySymbol {
             get {
@@ -151,7 +151,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Kunde.
+        ///   Looks up a localized string similar to Customer.
         /// </summary>
         public static string CustomerName {
             get {
@@ -160,7 +160,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to bearbeiten.
+        ///   Looks up a localized string similar to edit.
         /// </summary>
         public static string EditOrderLink {
             get {
@@ -169,7 +169,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Motor.
+        ///   Looks up a localized string similar to Engine.
         /// </summary>
         public static string Engine {
             get {
@@ -178,7 +178,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sonderausstattung.
+        ///   Looks up a localized string similar to Equipment.
         /// </summary>
         public static string Equipment {
             get {
@@ -187,7 +187,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wird geladen.
+        ///   Looks up a localized string similar to Loading.
         /// </summary>
         public static string Loading {
             get {
@@ -196,7 +196,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Die Änderung wurde erfolgreich gespeichert.
+        ///   Looks up a localized string similar to The change was saved successfully.
         /// </summary>
         public static string OrderChanged {
             get {
@@ -205,7 +205,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ihre Bestellung ist gespeichert..
+        ///   Looks up a localized string similar to Your order is saved.
         /// </summary>
         public static string OrderCreated {
             get {
@@ -214,7 +214,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bitte wählen Sie ein Fahrzeug aus.
+        ///   Looks up a localized string similar to Please select a vehicle.
         /// </summary>
         public static string RequiredCar {
             get {
@@ -223,7 +223,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bitte wählen Sie die Lackierug aus.
+        ///   Looks up a localized string similar to Please select a color.
         /// </summary>
         public static string RequiredColor {
             get {
@@ -232,7 +232,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bitte tragen Sie Ihr Namen ein.
+        ///   Looks up a localized string similar to Please enter your name.
         /// </summary>
         public static string RequiredCustomerName {
             get {
@@ -241,7 +241,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bitte wählen Sie ein Motor aus.
+        ///   Looks up a localized string similar to Please select an engine.
         /// </summary>
         public static string RequiredEngine {
             get {
@@ -250,7 +250,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bitte wählen Sie die Felgen aus.
+        ///   Looks up a localized string similar to Please select rims.
         /// </summary>
         public static string RequiredRim {
             get {
@@ -259,7 +259,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Felgen.
+        ///   Looks up a localized string similar to Rims.
         /// </summary>
         public static string Rims {
             get {
@@ -268,7 +268,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bestellen.
+        ///   Looks up a localized string similar to Submit.
         /// </summary>
         public static string Submit {
             get {
@@ -277,7 +277,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Light aus.
+        ///   Looks up a localized string similar to Light off.
         /// </summary>
         public static string ThemeDark {
             get {
@@ -286,7 +286,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Light ein.
+        ///   Looks up a localized string similar to Light on.
         /// </summary>
         public static string ThemeLight {
             get {
@@ -295,7 +295,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gesamtpreis.
+        ///   Looks up a localized string similar to Total price.
         /// </summary>
         public static string TotalPrice {
             get {
@@ -304,7 +304,16 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ein Felher ist aufgetreten. Bitte versuchen Sie erneut später..
+        ///   Looks up a localized string similar to * This program is not a commercial application and is used only for educational purposes. The entire range and prices are fictitious. You can not purchase a real car with this program. 2017 M.Binger.
+        /// </summary>
+        public static string Trademark {
+            get {
+                return ResourceManager.GetString("Trademark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error has occurred. Please try again later..
         /// </summary>
         public static string UnknownError {
             get {
@@ -313,7 +322,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fahrzeugkonfigurator.
+        ///   Looks up a localized string similar to Vehicle configurator*.
         /// </summary>
         public static string VehicleConfiguratorH1 {
             get {

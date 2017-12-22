@@ -9,10 +9,9 @@
 
       var restServiceClient = new VehicleConfigurator.RestServiceClient("@Model.Base.ServiceApiUrl",
          "@Plain.CanNotConnectRestService",
-         "@Model.ImagesPath",
-         window.showError);
+         "@Model.ImagesPath");
 
-      var orderId = null;
+      var orderId = "";
       var page1Visible = true;
       var page2Visible = false;
       var page3Visible = false;
@@ -107,22 +106,22 @@
 
          //button "next" on page-1 is clicked
             this.btnNext1Click = function() {
-               window.hideWarning();
+               Tools.hideWarning();
                //validate input
                if (this.CarId() <= 0) {
-                  window.showWarning("@Plain.RequiredCar");
+                  Tools.showWarning("@Plain.RequiredCar");
                return;
             }
             if (this.EngineId() <= 0) {
-               window.showWarning("@Plain.RequiredEngine");
+               Tools.showWarning("@Plain.RequiredEngine");
                return;
             }
             if (this.RimId() <= 0) {
-               window.showWarning("@Plain.RequiredRim");
+               Tools.showWarning("@Plain.RequiredRim");
                return;
             }
             if (this.ColorId() <= 0) {
-               window.showWarning("@Plain.RequiredColor");
+               Tools.showWarning("@Plain.RequiredColor");
                return;
             }
 
@@ -133,11 +132,11 @@
 
          //button "next" on page-2 is clicked
             this.btnNext2Click = function() {
-               window.hideWarning();
+               Tools.hideWarning();
 
             //validate input
             if (this.CustomerName().length <= 0) {
-               window.showWarning("@Plain.RequiredCustomerName");
+               Tools.showWarning("@Plain.RequiredCustomerName");
                return;
             }
 
@@ -190,8 +189,8 @@
 
          //button "save" in the "edit" mode on page-3 is clicked
          this.btnSaveClick = function() {
-            window.hideError();
-            window.hideWarning();
+            Tools.hideError();
+            Tools.hideWarning();
 
             //disable checkout buttons
             self.CheckoutButtonsEnabled(false);
@@ -206,7 +205,7 @@
                   self.CheckoutButtonsEnabled(true);
 
                   if (!success) {
-                     window.showError("@Plain.UnknownError");
+                     tools.showError("@Plain.UnknownError");
                      return;
                   }
                   //navigate to success page
@@ -216,14 +215,14 @@
 
             } catch (e) {
                console.log(e);
-               window.showError("@Plain.UnknownError");
+               tools.showError("@Plain.UnknownError");
             }
          };
 
          //button "checkout" in the "create" mode on page-3 is clicked
          this.btnCheckoutClick = function() {
-            window.hideError();
-            window.hideWarning();
+            Tools.hideError();
+            Tools.hideWarning();
             self.CheckoutButtonsEnabled(false);
 
             try {
@@ -236,7 +235,7 @@
                restServiceClient.CreateOrder(orderDto, orderEquipmentDto, function(orderId) {
                   self.CheckoutButtonsEnabled(true);
                   if (orderId == null || orderId <= 0) {
-                     window.showError("@Plain.UnknownError");
+                     tools.showError("@Plain.UnknownError");
                      return;
                   }
                   var url = "@Url.Action(ActionNames.Order.Done, ControllerNames.Order)/" + orderId;
@@ -245,7 +244,7 @@
 
             } catch (e) {
                console.log(e);
-               window.showError("@Plain.UnknownError");
+               tools.showError("@Plain.UnknownError");
             }
          };
       }

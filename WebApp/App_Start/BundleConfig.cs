@@ -26,7 +26,8 @@ namespace WebApp
 
 
          bundles.Add(new ScriptBundle("~/bundles/configurator").Include(
-                   "~/Scripts/service-client.js"));
+             "~/Scripts/tools.js",
+             "~/Scripts/service-client.js"));
 
          bundles.Add(new StyleBundle("~/Content/css/dark").Include(
                    "~/Content/bootstrap.css",

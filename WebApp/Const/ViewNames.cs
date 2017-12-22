@@ -21,5 +21,11 @@ namespace WebApp.Const
             Templates = "_Templates",
             ViewModel = "_ViewModel";
       }
+
+       public static class Shared
+       {
+           public const string
+               Configuration = "_Configuration";
+       }
    }
 }

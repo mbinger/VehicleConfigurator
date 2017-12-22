@@ -1,14 +1,13 @@
 ﻿var VehicleConfigurator = {
 
-   RestServiceClient : function(serviceBaseUrl, errorMessageText, imagesBasePath, onErrorFunction) {
+   RestServiceClient : function(serviceBaseUrl, errorMessageText, imagesBasePath) {
       var serviceUrl = serviceBaseUrl;
       var errorMessage = errorMessageText;
       var imagesPath = imagesBasePath;
-      var onError = onErrorFunction;
       var self = this;
 
       this.ShowError = function () {
-            onError(errorMessage);
+            Tools.showError(errorMessage);
          },
 
       this.ShowErrors = function (errors) {
@@ -19,7 +18,7 @@
                message += "<br>";
             }
          }
-         onError(message);
+         Tools.showError(message);
       },
 
       //get cars
