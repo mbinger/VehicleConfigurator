@@ -9,7 +9,7 @@ namespace Service.Common.DataTransfer
 {
    public class OrderDto: IDataTransferObject
    {
-      public long Id { get; set; }
+      public Guid Id { get; set; }
       public string CustomerName { get; set; }
 
       public long CarId { get; set; }

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL.Common.Common;
 using DAL.Common.Interface;
 
 namespace DAL.Common.Equipment
@@ -11,10 +12,8 @@ namespace DAL.Common.Equipment
    /// <summary>
    /// Base car
    /// </summary>
-   public class Car : IEntity
+   public class Car : LongEntity
    {
-      public long Id { get; set; }
-
       [Required, MaxLength(Attributes.ShortTextLength)]
       public string Name { get; set; }
 

@@ -58,9 +58,9 @@
     <Compile Include="Migrations\201712211402171_InitialCreate.Designer.cs">
       <DependentUpon>201712211402171_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712211403582_AddGuidToOrder.cs" />
-    <Compile Include="Migrations\201712211403582_AddGuidToOrder.Designer.cs">
-      <DependentUpon>201712211403582_AddGuidToOrder.cs</DependentUpon>
+    <Compile Include="Migrations\201712211503585_ChangeIdToGuid.cs" />
+    <Compile Include="Migrations\201712211503585_ChangeIdToGuid.Designer.cs">
+      <DependentUpon>201712211503585_ChangeIdToGuid.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\ConfigurationDropAndCreateDatabaseIfModelChanges.cs" />
@@ -100,8 +100,8 @@
     <EmbeddedResource Include="Migrations\201712211402171_InitialCreate.resx">
       <DependentUpon>201712211402171_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712211403582_AddGuidToOrder.resx">
-      <DependentUpon>201712211403582_AddGuidToOrder.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712211503585_ChangeIdToGuid.resx">
+      <DependentUpon>201712211503585_ChangeIdToGuid.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resource\Plain.resx">
       <Generator>ResXFileCodeGenerator</Generator>

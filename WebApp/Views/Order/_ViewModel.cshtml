@@ -18,9 +18,10 @@
       var page3Visible = false;
       var editMode = false;
 
-      @if (Model.Base.Id != null) {
+      @if (!String.IsNullOrEmpty(Model.Base.Id))
+      {
       <text>
-      orderId = '@Model.Base.Id.Value';
+      orderId = '@Model.Base.Id';
       page1Visible = false;
       page3Visible = true;
       editMode = true;

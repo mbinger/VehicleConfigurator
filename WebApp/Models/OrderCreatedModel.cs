@@ -7,6 +7,6 @@ namespace WebApp.Models
 {
    public class OrderCreatedModel
    {
-      public long Id { get; set; }
+      public string Id { get; set; }
    }
 }

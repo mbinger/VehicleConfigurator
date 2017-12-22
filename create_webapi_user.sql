@@ -17,5 +17,7 @@ GRANT SELECT ON dbo.OrderStatusRefs TO webapi
 GRANT SELECT ON dbo.Rims TO webapi
 GRANT SELECT ON dbo.RimTypeRefs TO webapi
 
+GRANT SELECT ON dbo.__MigrationHistory TO webapi
+
 CREATE USER webapiuser FOR LOGIN webapiuser WITH DEFAULT_SCHEMA = dbo
 EXEC sp_addrolemember N'webapi', N'webapiuser'

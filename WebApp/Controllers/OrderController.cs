@@ -34,14 +34,14 @@ namespace WebApp.Controllers
          return View(ViewNames.Order.CreateEdit, model);
       }
 
-      public ActionResult Edit(long id)
+      public ActionResult Edit(string id)
       {
          var model = InitCreateEditModel();
          model.Id = id;
          return View(ViewNames.Order.CreateEdit, model);
       }
 
-      public ActionResult Done(long id)
+      public ActionResult Done(string id)
       {
          var model = new OrderCreatedModel
          {
@@ -50,7 +50,7 @@ namespace WebApp.Controllers
          return View(ViewNames.Order.Done, model);
       }
 
-      public ActionResult Changed(long id)
+      public ActionResult Changed(string id)
       {
          var model = new OrderCreatedModel
          {

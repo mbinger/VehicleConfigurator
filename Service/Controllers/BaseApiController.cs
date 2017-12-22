@@ -37,7 +37,7 @@ namespace Service.Controllers
         }
 
         // GET api/colors
-        public async Task<IEnumerable<TDto>> Get(int page = 0, int pageSize = 100)
+        public virtual async Task<IEnumerable<TDto>> Get(int page = 0, int pageSize = 100)
         {
             var query = _repository.ReadAll(page, pageSize);
             var fetched = await _repository.FetchAsync(query);
@@ -45,7 +45,7 @@ namespace Service.Controllers
         }
 
         // GET api/colors/5
-        public async Task<TDto> Get(long id)
+        public virtual async Task<TDto> Get(string id)
         {
             var entity = await _repository.ReadByIdAsync(id);
             var dto = Mapper.Map<TDto>(entity);
@@ -66,7 +66,7 @@ namespace Service.Controllers
                 _repository.Create(entity);
                 await _repository.SaveAsync();
 
-                result.Id = entity.Id;
+                result.Id = entity.GetGenericId();
                 result.Success = true;
             }
             catch (DalValidationException ex)
@@ -78,20 +78,8 @@ namespace Service.Controllers
         }
 
         // PUT api/colors/5
-        public async Task<CudResultDto> Put(long id, [FromBody] TDto value)
+        public async Task<CudResultDto> Put(string id, [FromBody] TDto value)
         {
-            if (value.Id != id)
-            {
-                return new CudResultDto
-                {
-                    Success = false,
-                    Errors = new List<string>
-               {
-                  "Bad id"
-               }
-                };
-            }
-
             var result = new CudResultDto
             {
                 Success = false
@@ -116,7 +104,7 @@ namespace Service.Controllers
         }
 
         // DELETE api/colors/5
-        public async Task<CudResultDto> Delete(long id)
+        public async Task<CudResultDto> Delete(string id)
         {
             var result = new CudResultDto
             {

@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAL.Common.Interface;
+using DAL.Common.Common;
 using DAL.Common.Reference;
 
 namespace DAL.Common.Equipment
@@ -12,9 +9,8 @@ namespace DAL.Common.Equipment
    /// <summary>
    /// Car color
    /// </summary>
-   public class Color: IEntity
-   {
-      public long Id { get; set; }
+   public class Color: LongEntity
+    {
 
       [Required, MaxLength(Attributes.ShortTextLength)]
       public string Name { get; set; }

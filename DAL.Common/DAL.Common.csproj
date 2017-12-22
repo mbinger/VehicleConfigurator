@@ -47,6 +47,8 @@
   <ItemGroup>
     <Compile Include="Booking\Order.cs" />
     <Compile Include="Booking\OrderAdditionalEquipmentItem.cs" />
+    <Compile Include="Common\GuidEntity.cs" />
+    <Compile Include="Common\LongEntity.cs" />
     <Compile Include="Const\Attributes.cs" />
     <Compile Include="Equipment\AdditionalEquipmentItem.cs" />
     <Compile Include="Equipment\Car.cs" />

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL.Common.Common;
 using DAL.Common.Interface;
 using DAL.Common.Reference;
 
@@ -12,11 +13,8 @@ namespace DAL.Common.Equipment
    /// <summary>
    /// Rim item
    /// </summary>
-   public class Rim : IEntity
+   public class Rim : LongEntity
    {
-      [Key]
-      public long Id { get; set; }
-
       [Required, MaxLength(Attributes.ShortTextLength)]
       public string Name { get; set; }
 

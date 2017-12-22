@@ -364,9 +364,10 @@ namespace DAL.Migrations
 
             #region Orders
 
+            var orderId1 = Guid.NewGuid();
             var order1 = new Order
             {
-                Id = 1,
+                Id = orderId1,
                 CarId = 1,
                 CustomerName = "Olga Binger",
                 EngineId = 1,
@@ -376,9 +377,10 @@ namespace DAL.Migrations
             };
             context.Orders.Add(order1);
 
+            var orderId2 = Guid.NewGuid();
             var order2 = new Order
             {
-                Id = 2,
+                Id = orderId2,
                 CarId = 2,
                 CustomerName = "Maksim Binger",
                 EngineId = 2,
@@ -390,32 +392,32 @@ namespace DAL.Migrations
 
             context.OrderAdditionalEquipmentItems.Add(new OrderAdditionalEquipmentItem
             {
-                OrderId = 1,
+                OrderId = orderId1,
                 EquipmentId = 1
             });
             context.OrderAdditionalEquipmentItems.Add(new OrderAdditionalEquipmentItem
             {
-                OrderId = 2,
+                OrderId = orderId2,
                 EquipmentId = 1
             });
             context.OrderAdditionalEquipmentItems.Add(new OrderAdditionalEquipmentItem
             {
-                OrderId = 2,
+                OrderId = orderId2,
                 EquipmentId = 2
             });
             context.OrderAdditionalEquipmentItems.Add(new OrderAdditionalEquipmentItem
             {
-                OrderId = 2,
+                OrderId = orderId2,
                 EquipmentId = 3
             });
             context.OrderAdditionalEquipmentItems.Add(new OrderAdditionalEquipmentItem
             {
-                OrderId = 2,
+                OrderId = orderId2,
                 EquipmentId = 4
             });
             context.OrderAdditionalEquipmentItems.Add(new OrderAdditionalEquipmentItem
             {
-                OrderId = 2,
+                OrderId = orderId2,
                 EquipmentId = 5
             });
             context.SaveChanges();

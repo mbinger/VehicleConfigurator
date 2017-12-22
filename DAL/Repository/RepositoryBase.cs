@@ -54,9 +54,10 @@ namespace DAL.Repository
             return await query.ToListAsync<T>();
         }
 
-        public virtual async Task<T> ReadByIdAsync(long id)
+        public virtual async Task<T> ReadByIdAsync(string id)
         {
-            return await DbSet.FindAsync(id);
+            var longId = long.Parse(id);
+            return await DbSet.FindAsync(longId);
         }
 
         public virtual void Update(T entity)
@@ -66,7 +67,7 @@ namespace DAL.Repository
             entry.State = EntityState.Modified;
         }
 
-        public virtual async Task DeleteAsync(long id)
+        public virtual async Task DeleteAsync(string id)
         {
             var item = await ReadByIdAsync(id);
             DbSet.Remove(item);

@@ -7,7 +7,7 @@ namespace WebApp.Models
 {
    public class CreateEditOrderModel
    {
-      public long? Id { get; set; }
+      public string Id { get; set; }
       /// <summary>
       /// Service base url
       /// </summary>

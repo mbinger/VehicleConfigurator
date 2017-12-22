@@ -36,7 +36,7 @@ namespace DAL.Common.Interface
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<TEntity> ReadByIdAsync(long id);
+        Task<TEntity> ReadByIdAsync(string id);
 
         /// <summary>
         /// Update item
@@ -48,7 +48,7 @@ namespace DAL.Common.Interface
         /// Delete item
         /// </summary>
         /// <param name="id"></param>
-        Task DeleteAsync(long id);
+        Task DeleteAsync(string id);
 
         /// <summary>
         /// Save changes

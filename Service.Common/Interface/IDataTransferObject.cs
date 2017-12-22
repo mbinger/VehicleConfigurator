@@ -8,6 +8,5 @@ namespace Service.Common.Interface
 {
    public interface IDataTransferObject
    {
-      long Id { get; set; }
    }
 }

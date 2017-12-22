@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAL.Common.Interface;
+using DAL.Common.Common;
 
 namespace DAL.Common.Reference
 {
-   public class OrderStatusRef: IEntity
-   {
-      public long Id { get; set; }
+   public class OrderStatusRef: LongEntity
+    {
 
       [Required, MaxLength(Attributes.ShortTextLength)]
       public string Name { get; set; }

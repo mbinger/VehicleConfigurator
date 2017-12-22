@@ -1,25 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAL.Common.Interface;
+using DAL.Common.Common;
 using DAL.Common.Reference;
 namespace DAL.Common.Equipment
 {
    /// <summary>
    /// Engine
    /// </summary>
-   public class Engine : IEntity
-   {
+   public class Engine : LongEntity
+    {
       public Engine()
       {
          Volume = 1;
          Power = 60;
       }
-
-      public long Id { get; set; }
 
       [Required, MaxLength(Attributes.ShortTextLength)]
       public string Name { get; set; }

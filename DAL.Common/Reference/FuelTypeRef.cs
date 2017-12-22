@@ -1,18 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAL.Common;
-using DAL.Common.Interface;
+using DAL.Common.Common;
 
 namespace DAL.Common.Reference
 {
-   public class FuelTypeRef: IEntity
-   {
-      public long Id { get; set; }
-
+   public class FuelTypeRef: LongEntity
+    {
       [Required, MaxLength(Attributes.ShortTextLength)]
       public string Name { get; set; }
    }

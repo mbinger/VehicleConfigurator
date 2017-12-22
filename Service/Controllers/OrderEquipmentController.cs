@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.UI.WebControls;
 using DAL.Common.Booking;
 using DAL.Common.Interface;
 using DAL.Common.Interface.Validation;
@@ -26,10 +25,7 @@ namespace Service.Controllers
             if (disposing)
             {
                 var disposableRepository = _repository as IDisposable;
-                if (disposableRepository != null)
-                {
-                    disposableRepository.Dispose();
-                }
+                disposableRepository?.Dispose();
                 _repository = null;
             }
         }
@@ -41,12 +37,13 @@ namespace Service.Controllers
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        public IEnumerable<long> Get(long id, int page = 0, int pageSize = 100)
+        public IEnumerable<long> Get(string id, int page = 0, int pageSize = 100)
         {
+            var guid = Guid.Parse(id);
             return _repository.ReadAll(page, pageSize)
-               .Where(p => p.OrderId == id)
-               .AsEnumerable()
-               .Select(p => p.EquipmentId);
+                .Where(p => p.OrderId == guid)
+                .AsEnumerable()
+                .Select(p => p.EquipmentId);
         }
 
         /// <summary>
@@ -55,7 +52,7 @@ namespace Service.Controllers
         /// <param name="id">order id</param>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public async Task<CudResultDto> Post(long id, [FromBody] OrderEquipmentDto dto)
+        public async Task<CudResultDto> Post(string id, [FromBody] OrderEquipmentDto dto)
         {
             var result = new CudResultDto
             {
@@ -64,9 +61,10 @@ namespace Service.Controllers
 
             try
             {
-                var query = _repository.ReadAll().Where(p => p.OrderId == id);
+                var guid = Guid.Parse(id);
+                var query = _repository.ReadAll().Where(p => p.OrderId == guid);
                 var items = await _repository.FetchAsync(query);
-                var deleteTasks = items.Select(p => _repository.DeleteAsync(p.Id)).ToArray();
+                var deleteTasks = items.Select(p => _repository.DeleteAsync(p.GetGenericId())).ToArray();
                 Task.WaitAll(deleteTasks);
 
                 if (dto != null && dto.EquipmentIds != null)
@@ -75,7 +73,7 @@ namespace Service.Controllers
                     {
                         _repository.Create(new OrderAdditionalEquipmentItem
                         {
-                            OrderId = id,
+                            OrderId = guid,
                             EquipmentId = value
                         });
                     }

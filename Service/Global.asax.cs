@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Routing;
 using System.Diagnostics;
+using log4net;
 
 namespace Service
 {
@@ -13,11 +14,12 @@ namespace Service
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
-
+            LogConfig.RegisterLogging();
             DependenciesConfig.RegisterDependencies();
             MappingConfig.RegisterMapping();
-
-            Trace.TraceInformation("Applicaton startet");
+            
+            var log = LogManager.GetLogger(typeof(WebApiApplication));
+            log.Info("Applicaton startet");
         }
     }
 }

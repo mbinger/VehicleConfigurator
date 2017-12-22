@@ -12,7 +12,7 @@ namespace Service.Common.DataTransfer
       {
          Errors = new List<string>();
       }
-      public long Id { get; set; }
+      public string Id { get; set; }
       public bool Success { get; set; }
       public List<string> Errors { get; set; }
    }

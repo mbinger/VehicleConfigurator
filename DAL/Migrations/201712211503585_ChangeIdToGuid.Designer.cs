@@ -7,13 +7,13 @@ namespace DAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddGuidToOrder : IMigrationMetadata
+    public sealed partial class ChangeIdToGuid : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddGuidToOrder));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangeIdToGuid));
         
         string IMigrationMetadata.Id
         {
-            get { return "201712211403582_AddGuidToOrder"; }
+            get { return "201712211503585_ChangeIdToGuid"; }
         }
         
         string IMigrationMetadata.Source
