@@ -1,1 +1,0 @@
-INFO  2017-12-22 09:56:09,402   197ms WebApiApplication      Application_Start  - Applicaton startet
