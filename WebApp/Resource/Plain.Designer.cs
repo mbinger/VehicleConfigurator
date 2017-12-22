@@ -295,6 +295,15 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vehicle configurator.
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total price.
         /// </summary>
         public static string TotalPrice {
@@ -322,7 +331,7 @@ namespace WebApp.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vehicle configurator*.
+        ///   Looks up a localized string similar to Vehicle configurator *.
         /// </summary>
         public static string VehicleConfiguratorH1 {
             get {
