@@ -1,11 +1,35 @@
-﻿<script type="text/javascript">
+﻿@using System.Configuration
+@using WebApp.Const
+@using WebApp.Resource
+<script type="text/javascript">
     window.vcfg = {
-        options: {
-            cookieLocalizationModuleCookieName: "@WebApp.Modules.CookieLocalizationModule.CookieName"
+        Options: {
+            CookieLocalizationModuleCookieName: "@WebApp.Modules.CookieLocalizationModule.CookieName",
+            ServiceApiUrl: "@ConfigurationManager.AppSettings["ServiceApiUrl"]",
+            ImagesPath: "@Url.Content("~/Content/configurator/")"
         },
 
-        i18: {
+        Placeholder: {
+            RadioGroupCars: "@Placeholder.RadioGroupCars",
+            RadioGroupEngines: "@Placeholder.RadioGroupEngines",
+            RadioGroupColors: "@Placeholder.RadioGroupColors",
+            RadioGroupRims: "@Placeholder.RadioGroupRims",
+            RadioGroupEq: "@Placeholder.RadioGroupEq"
+        },
 
+        Url: {
+            OrderChanged: "@Url.Action(ActionNames.Order.Changed, ControllerNames.Order)/",
+            OrderDone: "@Url.Action(ActionNames.Order.Done, ControllerNames.Order)/"
+        },
+
+        Plain: {
+            CanNotConnectRestService: "@Plain.CanNotConnectRestService",
+            RequiredCar: "@Plain.RequiredCar",
+            RequiredEngine: "@Plain.RequiredEngine",
+            RequiredRim: "@Plain.RequiredRim",
+            RequiredColor: "@Plain.RequiredColor",
+            RequiredCustomerName: "@Plain.RequiredCustomerName",
+            UnknownError: "@Plain.UnknownError"
         }
     };
 </script>

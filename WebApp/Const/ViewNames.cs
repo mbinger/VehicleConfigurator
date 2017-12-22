@@ -18,8 +18,7 @@ namespace WebApp.Const
             Page1 = "_Page1",
             Page2 = "_Page2",
             Page3 = "_Page3",
-            Templates = "_Templates",
-            ViewModel = "_ViewModel";
+            Templates = "_Templates";
       }
 
        public static class Shared

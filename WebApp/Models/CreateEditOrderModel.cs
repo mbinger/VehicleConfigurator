@@ -8,9 +8,5 @@ namespace WebApp.Models
    public class CreateEditOrderModel
    {
       public string Id { get; set; }
-      /// <summary>
-      /// Service base url
-      /// </summary>
-      public string ServiceApiUrl { get; set; }
    }
 }

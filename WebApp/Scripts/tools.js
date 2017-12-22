@@ -22,7 +22,7 @@
     },
 
     changeLang: function (cultureName) {
-        document.cookie = window.vcfg.options.cookieLocalizationModuleCookieName+"="+cultureName;
+        document.cookie = window.vcfg.Options.CookieLocalizationModuleCookieName+"="+cultureName;
         window.location.reload();
         return false;
     }

@@ -1,13 +1,10 @@
 ﻿var VehicleConfigurator = {
 
-   RestServiceClient : function(serviceBaseUrl, errorMessageText, imagesBasePath) {
-      var serviceUrl = serviceBaseUrl;
-      var errorMessage = errorMessageText;
-      var imagesPath = imagesBasePath;
+   RestServiceClient : function() {
       var self = this;
 
       this.ShowError = function () {
-            Tools.showError(errorMessage);
+          Tools.showError(window.vcfg.Plain.CanNotConnectRestService);
          },
 
       this.ShowErrors = function (errors) {
@@ -25,11 +22,11 @@
       this.GetCars = function (callback) {
          $.ajax({
             type: 'get',
-            url: serviceUrl + '/cars',
+            url: window.vcfg.Options.ServiceApiUrl + '/cars',
             dataType: 'json',
             success: function (data) {
                for (var i = 0; i < data.length; i++) {
-                  data[i].ImageUrl = imagesPath + data[i].ImageUrl;
+                  data[i].ImageUrl = window.vcfg.Options.ImagesPath + data[i].ImageUrl;
                }
                callback(data);
             },
@@ -44,11 +41,11 @@
       this.GetEngines = function (callback) {
          $.ajax({
             type: 'get',
-            url: serviceUrl + '/engines',
+            url: window.vcfg.Options.ServiceApiUrl + '/engines',
             dataType: 'json',
             success: function (data) {
                for (var i = 0; i < data.length; i++) {
-                  data[i].ImageUrl = imagesPath + data[i].ImageUrl;
+                  data[i].ImageUrl = window.vcfg.Options.ImagesPath + data[i].ImageUrl;
                }
                callback(data);
             },
@@ -63,11 +60,11 @@
       this.GetRims = function (callback) {
          $.ajax({
             type: 'get',
-            url: serviceUrl + '/rims',
+            url: window.vcfg.Options.ServiceApiUrl + '/rims',
             dataType: 'json',
             success: function (data) {
                for (var i = 0; i < data.length; i++) {
-                  data[i].ImageUrl = imagesPath + data[i].ImageUrl;
+                  data[i].ImageUrl = window.vcfg.Options.ImagesPath + data[i].ImageUrl;
                }
                callback(data);
             },
@@ -82,11 +79,11 @@
       this.GetColors = function (callback) {
          $.ajax({
             type: 'get',
-            url: serviceUrl + '/colors',
+            url: window.vcfg.Options.ServiceApiUrl + '/colors',
             dataType: 'json',
             success: function (data) {
                for (var i = 0; i < data.length; i++) {
-                  data[i].ImageUrl = imagesPath + data[i].ImageUrl;
+                  data[i].ImageUrl = window.vcfg.Options.ImagesPath + data[i].ImageUrl;
                }
                callback(data);
             },
@@ -101,11 +98,11 @@
       this.GetEquipment = function (callback) {
          $.ajax({
             type: 'get',
-            url: serviceUrl + '/additionalequipmentitems',
+            url: window.vcfg.Options.ServiceApiUrl + '/additionalequipmentitems',
             dataType: 'json',
             success: function (data) {
                for (var i = 0; i < data.length; i++) {
-                  data[i].ImageUrl = imagesPath + data[i].ImageUrl;
+                  data[i].ImageUrl = window.vcfg.Options.ImagesPath + data[i].ImageUrl;
                }
                callback(data);
             },
@@ -120,7 +117,7 @@
       this.CreateOrder = function (orderDto, orderEquipmentDto, callback) {
          $.ajax({
             type: 'post',
-            url: serviceUrl + '/orders',
+            url: window.vcfg.Options.ServiceApiUrl + '/orders',
             data: orderDto,
             dataType: 'json',
             success: function (data) {
@@ -153,7 +150,7 @@
       this.EditOrder = function (id, orderDto, orderEquipmentDto, callback) {
          $.ajax({
             type: 'put',
-            url: serviceUrl + '/orders/' + id,
+            url: window.vcfg.Options.ServiceApiUrl + '/orders/' + id,
             data: orderDto,
             dataType: 'json',
             success: function(data) {
@@ -187,7 +184,7 @@
       this.GetOrder = function (id, callback) {
          $.ajax({
             type: 'get',
-            url: serviceUrl + '/orders/'+id,
+            url: window.vcfg.Options.ServiceApiUrl + '/orders/'+id,
             dataType: 'json',
             success: function (data) {
                callback(data);
@@ -203,7 +200,7 @@
       this.GetOrderEquipment = function (id, callback) {
          $.ajax({
             type: 'get',
-            url: serviceUrl + '/orderequipment/' + id,
+            url: window.vcfg.Options.ServiceApiUrl + '/orderequipment/' + id,
             dataType: 'json',
             success: function (data) {
                callback(data);
@@ -219,7 +216,7 @@
       this.SetOrderEquipment = function (id, orderEquipmentDto, callback) {
          $.ajax({
             type: 'post',
-            url: serviceUrl + '/orderequipment/' + id,
+            url: window.vcfg.Options.ServiceApiUrl + '/orderequipment/' + id,
             data: orderEquipmentDto,
             dataType: 'json',
             async: false,
@@ -296,7 +293,7 @@
                         }
                         result.EquipmentItems = eq;
 
-                        if (orderId == null) {
+                        if (orderId == null || orderId == "") {
                            callback(result);
                            return;
                         }

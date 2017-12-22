@@ -1,5 +1,4 @@
 ﻿@using WebApp.Const
-@using WebApp.Models
 @using WebApp.Resource
 @model WebApp.Models.CreateEditOrderModel
 
@@ -25,31 +24,19 @@
    @Html.Partial(ViewNames.Order.Page3)
 </div>
 
-@{
-   var templatesModel = new CreateEditTemplatesModel
-   {
-      RadioGroupCars = "radioGroupCars",
-      RadioGroupEngines = "radioGroupEngines",
-      RadioGroupRims = "radioGroupRims",
-      RadioGroupColors = "radioGroupColors",
-      RadioGroupEq = "radioGroupEq"
-   };
-
-   var viewModel = new CreateEditOrderViewModelModel
-   {
-      Base = Model,
-      ImagesPath = Url.Content("~/Content/configurator/"),
-      TemplatesModel = templatesModel
-   };
-}
-
 @section Scripts {
 
    @Scripts.Render("~/bundles/configurator")
    @Scripts.Render("~/bundles/jqueryval")
    @Scripts.Render("~/bundles/configurator")
+   @Scripts.Render("~/Scripts/viewmodel.js")
 
-   @Html.Partial(ViewNames.Order.Templates, templatesModel)
+    @Html.Partial(ViewNames.Order.Templates)
 
-   @Html.Partial(ViewNames.Order.ViewModel, viewModel)
+    <script type="text/javascript">
+        $(function() {
+            var viewModel = new ViewModel("@Model.Id");
+            viewModel.apply();
+        });
+    </script>
 }

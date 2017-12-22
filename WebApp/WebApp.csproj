@@ -145,6 +145,7 @@
     <Compile Include="Config\Theme.cs" />
     <Compile Include="Const\ActionNames.cs" />
     <Compile Include="Const\ControllerNames.cs" />
+    <Compile Include="Const\Placeholder.cs" />
     <Compile Include="Const\ViewNames.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ThemeController.cs" />
@@ -153,7 +154,6 @@
     </Compile>
     <Compile Include="Models\CreateEditOrderModel.cs" />
     <Compile Include="Models\CreateEditOrderViewModelModel.cs" />
-    <Compile Include="Models\CreateEditTemplatesModel.cs" />
     <Compile Include="Models\OrderCreatedModel.cs" />
     <Compile Include="Modules\CookieLocalizationModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -284,6 +284,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\service-client.js" />
     <Content Include="Scripts\tools.js" />
+    <Content Include="Scripts\viewmodel.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -302,7 +303,6 @@
     <Content Include="Views\Order\_Page2.cshtml" />
     <Content Include="Views\Order\_Page3.cshtml" />
     <Content Include="Views\Order\_Templates.cshtml" />
-    <Content Include="Views\Order\_ViewModel.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Configuration.cshtml" />
   </ItemGroup>
