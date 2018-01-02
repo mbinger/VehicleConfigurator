@@ -22,5 +22,12 @@ namespace WebApp.Const
          public const string
             Index = "Index";
       }
+
+       public static class DynamicResources
+       {
+           public const string
+               ConfigurationJs = "ConfigurationJs",
+               PlainJs = "PlainJs";
+       }
    }
 }

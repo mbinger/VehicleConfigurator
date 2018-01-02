@@ -1,6 +1,5 @@
 ﻿@using System.Configuration
 @using WebApp.Const
-@using WebApp.Resource
 <script type="text/javascript">
     window.vcfg = {
         Options: {
@@ -20,16 +19,6 @@
         Url: {
             OrderChanged: "@Url.Action(ActionNames.Order.Changed, ControllerNames.Order)/",
             OrderDone: "@Url.Action(ActionNames.Order.Done, ControllerNames.Order)/"
-        },
-
-        Plain: {
-            CanNotConnectRestService: "@Plain.CanNotConnectRestService",
-            RequiredCar: "@Plain.RequiredCar",
-            RequiredEngine: "@Plain.RequiredEngine",
-            RequiredRim: "@Plain.RequiredRim",
-            RequiredColor: "@Plain.RequiredColor",
-            RequiredCustomerName: "@Plain.RequiredCustomerName",
-            UnknownError: "@Plain.UnknownError"
         }
     };
 </script>

@@ -147,8 +147,13 @@
     <Compile Include="Const\ControllerNames.cs" />
     <Compile Include="Const\Placeholder.cs" />
     <Compile Include="Const\ViewNames.cs" />
+    <Compile Include="Controllers\DynamicResourcesController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ThemeController.cs" />
+    <Compile Include="Filter\Base\IOutputProcessor.cs" />
+    <Compile Include="Filter\Base\OutputProcessorActionFilterAttribute.cs" />
+    <Compile Include="Filter\Base\OutputProcessorStream.cs" />
+    <Compile Include="Filter\RazorJavaScriptFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -304,7 +309,8 @@
     <Content Include="Views\Order\_Page3.cshtml" />
     <Content Include="Views\Order\_Templates.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Shared\_Configuration.cshtml" />
+    <Content Include="Views\DynamicResources\_ConfigurationJs.cshtml" />
+    <Content Include="Views\DynamicResources\_PlainJs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

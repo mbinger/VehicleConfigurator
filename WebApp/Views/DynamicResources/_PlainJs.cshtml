@@ -1,0 +1,10 @@
+﻿@model Dictionary<String, string>
+<script type="text/javascript">
+    window.Plain =
+    {
+        @foreach (var key in Model.Keys)
+        {
+            @key<text>:"</text>@Model[key]<text>",</text>
+        }
+    };
+</script>

@@ -4,7 +4,7 @@
       var self = this;
 
       this.ShowError = function () {
-          Tools.showError(window.vcfg.Plain.CanNotConnectRestService);
+          Tools.showError(window.Plain.CanNotConnectRestService);
          },
 
       this.ShowErrors = function (errors) {
@@ -236,7 +236,7 @@
       }
 
       //load all data
-      this.LoadData = function(orderId, callback) {
+      this.LoadData = function (orderId, callback) {
          var result =
          {
             OrderId: 0,

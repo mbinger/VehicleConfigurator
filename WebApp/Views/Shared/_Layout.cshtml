@@ -1,4 +1,5 @@
-﻿@using System.Web.Optimization
+﻿@using System.Globalization
+@using System.Web.Optimization
 @using WebApp.Config
 @using WebApp.Const
 @using WebApp.Resource
@@ -10,7 +11,6 @@
     <title>@Plain.Title</title>
     @Styles.Render(new WebApp.Config.Theme().CssFileName)
     @Scripts.Render("~/bundles/modernizr")
-    @Html.Partial(ViewNames.Shared.Configuration)
 </head>
 <body>
 
@@ -41,6 +41,8 @@
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/Scripts/Dynamic/configuration.js")
+@Scripts.Render($"~/Scripts/Dynamic/plain.{System.Threading.Thread.CurrentThread.CurrentUICulture.Name}.js")
 @Scripts.Render("~/bundles/knockout")
 @RenderSection("scripts", required: false)
 </body>

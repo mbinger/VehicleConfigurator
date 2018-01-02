@@ -13,7 +13,6 @@
     }
 
     this.apply = function() {
-
         restServiceClient.LoadData(orderId, function(orderToEdit) {
             if (orderToEdit == null) {
                 $("#div-loading").hide();
@@ -96,19 +95,19 @@
                     Tools.hideWarning();
                     //validate input
                     if (this.CarId() <= 0) {
-                        Tools.showWarning(window.vcfg.Plain.RequiredCar);
+                        Tools.showWarning(window.Plain.RequiredCar);
                         return;
                     }
                     if (this.EngineId() <= 0) {
-                        Tools.showWarning(window.vcfg.Plain.RequiredEngine);
+                        Tools.showWarning(window.Plain.RequiredEngine);
                         return;
                     }
                     if (this.RimId() <= 0) {
-                        Tools.showWarning(window.vcfg.Plain.RequiredRim);
+                        Tools.showWarning(window.Plain.RequiredRim);
                         return;
                     }
                     if (this.ColorId() <= 0) {
-                        Tools.showWarning(window.vcfg.Plain.RequiredColor);
+                        Tools.showWarning(window.Plain.RequiredColor);
                         return;
                     }
 
@@ -123,7 +122,7 @@
 
                     //validate input
                     if (this.CustomerName().length <= 0) {
-                        Tools.showWarning(window.vcfg.Plain.RequiredCustomerName);
+                        Tools.showWarning(window.Plain.RequiredCustomerName);
                         return;
                     }
 
@@ -192,7 +191,7 @@
                             self.CheckoutButtonsEnabled(true);
 
                             if (!success) {
-                                Tools.showError(window.vcfg.Plain.UnknownError);
+                                Tools.showError(window.Plain.UnknownError);
                                 return;
                             }
                             //navigate to success page
@@ -202,7 +201,7 @@
 
                     } catch (e) {
                         console.log(e);
-                        Tools.showError(window.vcfg.Plain.UnknownError);
+                        Tools.showError(window.Plain.UnknownError);
                     }
                 };
 
@@ -222,7 +221,7 @@
                         restServiceClient.CreateOrder(orderDto, orderEquipmentDto, function(orderId) {
                             self.CheckoutButtonsEnabled(true);
                             if (orderId == null || orderId <= 0) {
-                                Tools.showError(window.vcfg.Plain.UnknownError);
+                                Tools.showError(window.Plain.UnknownError);
                                 return;
                             }
                             var url = window.vcfg.Url.OrderDone + orderId;
@@ -231,7 +230,7 @@
 
                     } catch (e) {
                         console.log(e);
-                        Tools.showError(window.vcfg.Plain.UnknownError);
+                        Tools.showError(window.Plain.UnknownError);
                     }
                 };
             }

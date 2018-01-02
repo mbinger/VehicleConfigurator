@@ -1,4 +1,4 @@
-﻿var Tools = {
+﻿window.Tools = {
 
     //show/hide warning text
     showWarning: function(text) {

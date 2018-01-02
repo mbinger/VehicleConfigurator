@@ -7,8 +7,9 @@ namespace WebApp.Const
 {
    public class ControllerNames
    {
-      public const string
-         Order = "Order",
-         Theme = "Theme";
+       public const string
+           Order = "Order",
+           Theme = "Theme",
+           DynamicResources = "DynamicResources";
    }
 }
