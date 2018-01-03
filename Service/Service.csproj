@@ -207,8 +207,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />
-    <None Include="Properties\PublishProfiles\Local IIS.pubxml" />
-    <None Include="Properties\PublishProfiles\VehicleConfigurator - Web Deploy into Azure.pubxml" />
+    <None Include="Properties\PublishProfiles\VehicleConfigurator - Web Deploy Azure %28user%29.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
