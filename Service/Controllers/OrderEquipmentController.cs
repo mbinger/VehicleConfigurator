@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web.Http;
 using DAL.Common.Booking;
 using DAL.Common.Interface;
 using DAL.Common.Interface.Validation;
+using Microsoft.AspNetCore.Mvc;
 using Service.Common.DataTransfer;
 
 namespace Service.Controllers
 {
-    public class OrderEquipmentController : ApiController
+    public class OrderEquipmentController : Controller
     {
         public OrderEquipmentController(IRepository<OrderAdditionalEquipmentItem> repository)
         {

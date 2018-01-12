@@ -1,253 +1,232 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Data.Entity.Infrastructure.Annotations;
-using System.Data.Entity.Validation;
-using System.Linq;
 using DAL.Common.Booking;
 using DAL.Common.Equipment;
-using DAL.Common.Interface;
-using DAL.Common.Interface.Validation;
 using DAL.Common.Reference;
+using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Context
 {
-   public class ConfigDbContext : DbContext
-   {
+    public class ConfigDbContext : DbContext
+    {
+        public ConfigDbContext()
+        {
+        }
 
-      public const string DefaultConnectionName = "DefaultConnection";
+        public ConfigDbContext(DbContextOptions options):base(options)
+        {
+        }
 
-      /// <summary>
-      /// default
-      /// </summary>
-      public ConfigDbContext()
-         : base(DefaultConnectionName)
-      {
-      }
+        #region References
 
-      /// <summary>
-      /// with validation support
-      /// </summary>
-      /// <param name="serviceLocator"></param>
-      public ConfigDbContext(IServiceLocator serviceLocator):
-         base(DefaultConnectionName)
-      {
-         _serviceLocator = serviceLocator;
-      }
+        public DbSet<ColorTypeRef> ColorTypes { get; set; }
+        public DbSet<OrderStatusRef> OrderStatuses { get; set; }
+        public DbSet<RimTypeRef> RimTypes { get; set; }
+        public DbSet<FuelTypeRef> FuelTypes { get; set; }
 
-      private IServiceLocator _serviceLocator;
+        #endregion
 
-      #region References
+        #region Equipment
 
-      public DbSet<ColorTypeRef> ColorTypes { get; set; }
-      public DbSet<OrderStatusRef> OrderStatuses { get; set; }
-      public DbSet<RimTypeRef> RimTypes { get; set; }
-      public DbSet<FuelTypeRef> FuelTypes { get; set; }
+        public DbSet<Car> Cars { get; set; }
+        public DbSet<Color> Colors { get; set; }
+        public DbSet<Engine> Engines { get; set; }
+        public DbSet<Rim> Rims { get; set; }
+        public DbSet<AdditionalEquipmentItem> AdditionalEquipmentItems { get; set; }
 
-      #endregion
+        #endregion
 
-      #region Equipment
+        #region Order
 
-      public DbSet<Car> Cars { get; set; }
-      public DbSet<Color> Colors { get; set; }
-      public DbSet<Engine> Engines { get; set; }
-      public DbSet<Rim> Rims { get; set; }
-      public DbSet<AdditionalEquipmentItem> AdditionalEquipmentItems { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderAdditionalEquipmentItem> OrderAdditionalEquipmentItems { get; set; }
 
-      #endregion
+        #endregion
 
-      #region Order
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
 
-      public DbSet<Order> Orders { get; set; }
-      public DbSet<OrderAdditionalEquipmentItem> OrderAdditionalEquipmentItems { get; set; }
+            #region Booking
 
-      #endregion
+            modelBuilder.Entity<Order>().HasKey(p => p.Id);
+            modelBuilder.Entity<Order>()
+               //todo:.HasOne(p => p.Car)
+               .HasOne(p => p.Car)
+               .WithMany()
+               .HasForeignKey(p => p.CarId)
+               .OnDelete(DeleteBehavior.Restrict);
 
-      protected override void OnModelCreating(DbModelBuilder modelBuilder)
-      {
-         base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Order>()
+               .HasOne(p => p.Engine)
+               .WithMany()
+               .HasForeignKey(p => p.EngineId)
+               .OnDelete(DeleteBehavior.Restrict);
 
-         #region Booking
+            modelBuilder.Entity<Order>()
+               .HasOne(p => p.Rim)
+               .WithMany()
+               .HasForeignKey(p => p.RimId)
+               .OnDelete(DeleteBehavior.Restrict);
 
-         modelBuilder.Entity<Order>().HasKey(p => p.Id);
-         modelBuilder.Entity<Order>()
-            .HasRequired(p => p.Car)
-            .WithMany()
-            .HasForeignKey(p => p.CarId)
-            .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Order>()
+               .HasOne(p => p.Status)
+               .WithMany()
+               .HasForeignKey(p => p.StatusId)
+               .OnDelete(DeleteBehavior.Restrict);
 
-         modelBuilder.Entity<Order>()
-            .HasRequired(p => p.Engine)
-            .WithMany()
-            .HasForeignKey(p => p.EngineId)
-            .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Order>()
+               .HasOne(p => p.Color)
+               .WithMany()
+               .HasForeignKey(p => p.ColorId)
+               .OnDelete(DeleteBehavior.Restrict);
 
-         modelBuilder.Entity<Order>()
-            .HasRequired(p => p.Rim)
-            .WithMany()
-            .HasForeignKey(p => p.RimId)
-            .WillCascadeOnDelete(false);
+            modelBuilder.Entity<OrderAdditionalEquipmentItem>().HasKey(p => p.Id);
+            modelBuilder.Entity<OrderAdditionalEquipmentItem>()
+               .HasOne(p => p.Order)
+               .WithMany()
+               .HasForeignKey(p => p.OrderId)
+               .OnDelete(DeleteBehavior.Restrict);
 
-         modelBuilder.Entity<Order>()
-            .HasRequired(p => p.Status)
-            .WithMany()
-            .HasForeignKey(p => p.StatusId)
-            .WillCascadeOnDelete(false);
+            modelBuilder.Entity<OrderAdditionalEquipmentItem>()
+               .HasOne(p => p.EquipmentItem)
+               .WithMany()
+               .HasForeignKey(p => p.EquipmentId)
+               .OnDelete(DeleteBehavior.Restrict);
 
-         modelBuilder.Entity<Order>()
-            .HasRequired(p => p.Color)
-            .WithMany()
-            .HasForeignKey(p => p.ColorId)
-            .WillCascadeOnDelete(false);
+            #endregion
 
-         modelBuilder.Entity<OrderAdditionalEquipmentItem>().HasKey(p => p.Id);
-         modelBuilder.Entity<OrderAdditionalEquipmentItem>()
-            .HasRequired(p => p.Order)
-            .WithMany()
-            .HasForeignKey(p => p.OrderId)
-            .WillCascadeOnDelete(true);
+            #region Equipment
 
-         modelBuilder.Entity<OrderAdditionalEquipmentItem>()
-            .HasRequired(p => p.EquipmentItem)
-            .WithMany()
-            .HasForeignKey(p => p.EquipmentId)
-            .WillCascadeOnDelete(false);
+            modelBuilder.Entity<AdditionalEquipmentItem>().HasKey(p => p.Id);
+            modelBuilder.Entity<Car>().HasKey(p => p.Id);
 
-         #endregion
+            modelBuilder.Entity<Color>().HasKey(p => p.Id);
+            modelBuilder.Entity<Color>()
+               .HasOne(p => p.Type)
+               .WithMany()
+               .HasForeignKey(p => p.TypeId)
+               .OnDelete(DeleteBehavior.Restrict);
 
-         #region Equipment
+            modelBuilder.Entity<Rim>().HasKey(p => p.Id);
+            modelBuilder.Entity<Rim>()
+               .HasOne(p => p.Type)
+               .WithMany()
+               .HasForeignKey(p => p.TypeId)
+               .OnDelete(DeleteBehavior.Restrict);
 
-         modelBuilder.Entity<AdditionalEquipmentItem>().HasKey(p => p.Id);
-         modelBuilder.Entity<Car>().HasKey(p => p.Id);
+            modelBuilder.Entity<Engine>().HasKey(p => p.Id);
+            modelBuilder.Entity<Engine>()
+               .HasOne(p => p.FuelType)
+               .WithMany()
+               .HasForeignKey(p => p.FuelTypeId)
+               .OnDelete(DeleteBehavior.Restrict);
 
-         modelBuilder.Entity<Color>().HasKey(p => p.Id);
-         modelBuilder.Entity<Color>()
-            .HasRequired(p => p.Type)
-            .WithMany()
-            .HasForeignKey(p => p.TypeId)
-            .WillCascadeOnDelete(false);
+            #endregion
 
-         modelBuilder.Entity<Rim>().HasKey(p => p.Id);
-         modelBuilder.Entity<Rim>()
-            .HasRequired(p => p.Type)
-            .WithMany()
-            .HasForeignKey(p => p.TypeId)
-            .WillCascadeOnDelete(false);
+            #region Reference
 
-         modelBuilder.Entity<Engine>().HasKey(p => p.Id);
-         modelBuilder.Entity<Engine>()
-            .HasRequired(p => p.FuelType)
-            .WithMany()
-            .HasForeignKey(p => p.FuelTypeId)
-            .WillCascadeOnDelete(false);
+            modelBuilder.Entity<ColorTypeRef>().HasKey(p => p.Id);
+            modelBuilder.Entity<FuelTypeRef>().HasKey(p => p.Id);
+            modelBuilder.Entity<OrderStatusRef>().HasKey(p => p.Id);
+            modelBuilder.Entity<RimTypeRef>().HasKey(p => p.Id);
 
-         #endregion
+            #endregion
 
-         #region Reference
+        }
 
-         modelBuilder.Entity<ColorTypeRef>().HasKey(p => p.Id);
-         modelBuilder.Entity<FuelTypeRef>().HasKey(p => p.Id);
-         modelBuilder.Entity<OrderStatusRef>().HasKey(p => p.Id);
-         modelBuilder.Entity<RimTypeRef>().HasKey(p => p.Id);
+        /*todo: validation?
+        /// <summary>
+        /// Do custom entity validation
+        /// </summary>
+        /// <param name="entityEntry"></param>
+        /// <param name="items"></param>
+        /// <returns></returns>
+        protected override DbEntityValidationResult ValidateEntity(DEntityEntry entityEntry, IDictionary<Object, Object> items)
+        {
+            var result = base.ValidateEntity(entityEntry, items);
 
-         #endregion
-
-      }
-
-      /// <summary>
-      /// Do custom entity validation
-      /// </summary>
-      /// <param name="entityEntry"></param>
-      /// <param name="items"></param>
-      /// <returns></returns>
-      protected override DbEntityValidationResult ValidateEntity(DbEntityEntry entityEntry, IDictionary<Object, Object> items)
-      {
-         var result = base.ValidateEntity(entityEntry, items);
-
-         if (_serviceLocator != null && entityEntry != null && entityEntry.Entity != null)
-         {
-             //resolve validation provider
-
-            IEntityValidator validationProvider = null;
-
-            var entityProxyType = entityEntry.Entity.GetType();
-            if (entityProxyType.BaseType != null)
+            if (_serviceLocator != null && entityEntry != null && entityEntry.Entity != null)
             {
-               validationProvider = _serviceLocator.GetNamedServiceSafe<IEntityValidator>(entityProxyType.BaseType == typeof(Object) 
-                  ? entityProxyType 
-                  : entityProxyType.BaseType);
+                //resolve validation provider
+
+                IEntityValidator validationProvider = null;
+
+                var entityProxyType = entityEntry.Entity.GetType();
+                if (entityProxyType.BaseType != null)
+                {
+                    validationProvider = _serviceLocator.GetNamedServiceSafe<IEntityValidator>(entityProxyType.BaseType == typeof(Object)
+                       ? entityProxyType
+                       : entityProxyType.BaseType);
+                }
+
+                if (validationProvider != null)
+                {
+                    ValidationEntityState state;
+                    if (entityEntry.State.HasFlag(EntityState.Added))
+                    {
+                        state = ValidationEntityState.Added;
+                    }
+                    else if (entityEntry.State.HasFlag(EntityState.Modified))
+                    {
+                        state = ValidationEntityState.Modified;
+                    }
+                    else if (entityEntry.State.HasFlag(EntityState.Deleted))
+                    {
+                        state = ValidationEntityState.Deleted;
+                    }
+                    else
+                    {
+                        state = ValidationEntityState.Othder;
+                    }
+
+                    var validationSummary = validationProvider.Validate(entityEntry.Entity, state);
+                    if (validationSummary != null && validationSummary.Any())
+                    {
+                        foreach (var item in validationSummary)
+                        {
+                            result.ValidationErrors.Add(new DbValidationError(item.Property, item.Error));
+                        }
+                    }
+                }
             }
 
-            if (validationProvider != null)
+            return result;
+        }
+
+        public override int SaveChanges()
+        {
+            try
             {
-               ValidationEntityState state;
-               if (entityEntry.State.HasFlag(EntityState.Added))
-               {
-                  state = ValidationEntityState.Added;
-               }
-               else if (entityEntry.State.HasFlag(EntityState.Modified))
-               {
-                  state = ValidationEntityState.Modified;
-               }
-               else if (entityEntry.State.HasFlag(EntityState.Deleted))
-               {
-                  state = ValidationEntityState.Deleted;
-               }
-               else
-               {
-                  state = ValidationEntityState.Othder;
-               }
-
-               var validationSummary = validationProvider.Validate(entityEntry.Entity, state);
-               if (validationSummary != null && validationSummary.Any())
-               {
-                  foreach (var item in validationSummary)
-                  {
-                     result.ValidationErrors.Add(new DbValidationError(item.Property, item.Error));
-                  }
-               }
+                return base.SaveChanges();
             }
-         }
-
-         return result;
-      }
-
-      public override int SaveChanges()
-      {
-         try
-         {
-            return base.SaveChanges();
-         }
-         catch (DbEntityValidationException ex)
-         {
-            //re-throw validation exception
-            var validationException = new DalValidationException();
-            foreach (var validationError in ex.EntityValidationErrors)
+            catch (DbEntityValidationException ex)
             {
-               foreach (var dbValidationError in validationError.ValidationErrors)
-               {
-                  validationException.Errors.Add(new ValidationEntityError(dbValidationError.PropertyName,  dbValidationError.ErrorMessage));
-               }
+                //re-throw validation exception
+                var validationException = new DalValidationException();
+                foreach (var validationError in ex.EntityValidationErrors)
+                {
+                    foreach (var dbValidationError in validationError.ValidationErrors)
+                    {
+                        validationException.Errors.Add(new ValidationEntityError(dbValidationError.PropertyName, dbValidationError.ErrorMessage));
+                    }
+                }
+
+                throw validationException;
             }
+        }
 
-            throw validationException;
-         }
-      }
-
-      protected override void Dispose(bool disposing)
-      {
-         base.Dispose(disposing);
-         if (disposing)
-         {
-            var disposableLocator = _serviceLocator as IDisposable;
-            if (disposableLocator != null)
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+            if (disposing)
             {
-               disposableLocator.Dispose();
+                var disposableLocator = _serviceLocator as IDisposable;
+                if (disposableLocator != null)
+                {
+                    disposableLocator.Dispose();
+                }
+                _serviceLocator = null;
             }
-            _serviceLocator = null;
-         }
-      }
-   }
+        }*/
+    }
 }

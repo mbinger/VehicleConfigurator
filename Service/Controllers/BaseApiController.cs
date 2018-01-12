@@ -2,24 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web.Http;
 using AutoMapper;
 using DAL.Common.Interface;
 using DAL.Common.Interface.Validation;
+using Microsoft.AspNetCore.Mvc;
 using Service.Common.DataTransfer;
 using Service.Common.Interface;
 
 namespace Service.Controllers
 {
-    public abstract class BaseApiController<TDto, TEntity> : ApiController
+    [Route("api/[controller]")]
+    public abstract class BaseApiController<TDto, TEntity> : Controller
        where TEntity : IEntity, new()
        where TDto : IDataTransferObject, new()
     {
-        protected BaseApiController(IRepository<TEntity> repository)
+        protected BaseApiController(IMapper mapper, IRepository<TEntity> repository)
         {
+            _mapper = mapper;
             _repository = repository;
         }
 
+        private IMapper _mapper;
         private IRepository<TEntity> _repository;
 
         protected override void Dispose(bool disposing)
@@ -37,22 +40,25 @@ namespace Service.Controllers
         }
 
         // GET api/colors
+        [HttpGet]
         public virtual async Task<IEnumerable<TDto>> Get(int page = 0, int pageSize = 100)
         {
             var query = _repository.ReadAll(page, pageSize);
             var fetched = await _repository.FetchAsync(query);
-            return fetched.Select(p => Mapper.Map<TDto>(p));
+            return fetched.Select(p => _mapper.Map<TDto>(p));
         }
 
         // GET api/colors/5
+        [HttpGet("{id}")]
         public virtual async Task<TDto> Get(string id)
         {
             var entity = await _repository.ReadByIdAsync(id);
-            var dto = Mapper.Map<TDto>(entity);
+            var dto = _mapper.Map<TDto>(entity);
             return dto;
         }
 
         // POST api/colors
+        [HttpPost]
         public async Task<CudResultDto> Post([FromBody] TDto value)
         {
             var result = new CudResultDto
@@ -62,7 +68,7 @@ namespace Service.Controllers
 
             try
             {
-                var entity = Mapper.Map<TEntity>(value);
+                var entity = _mapper.Map<TEntity>(value);
                 _repository.Create(entity);
                 await _repository.SaveAsync();
 
@@ -78,6 +84,7 @@ namespace Service.Controllers
         }
 
         // PUT api/colors/5
+        [HttpPut("{id}")]
         public async Task<CudResultDto> Put(string id, [FromBody] TDto value)
         {
             var result = new CudResultDto
@@ -88,7 +95,7 @@ namespace Service.Controllers
             try
             {
                 var entity = await _repository.ReadByIdAsync(id);
-                Mapper.Map(value, entity);
+                _mapper.Map(value, entity);
                 _repository.Update(entity);
                 await _repository.SaveAsync();
 
@@ -104,6 +111,7 @@ namespace Service.Controllers
         }
 
         // DELETE api/colors/5
+        [HttpDelete("{id}")]
         public async Task<CudResultDto> Delete(string id)
         {
             var result = new CudResultDto

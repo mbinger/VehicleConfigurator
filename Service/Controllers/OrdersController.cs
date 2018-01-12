@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Web.Http;
+using AutoMapper;
 using DAL.Common.Booking;
 using DAL.Common.Interface;
+using Microsoft.AspNetCore.Mvc;
 using Service.Common.DataTransfer;
 
 namespace Service.Controllers
 {
     public class OrdersController : BaseApiController<OrderDto, Order>
     {
-        public OrdersController(IRepository<Order> repository) : base(repository)
+        public OrdersController(IMapper mapper, IRepository<Order> repository) : base(mapper, repository)
         {
 
         }

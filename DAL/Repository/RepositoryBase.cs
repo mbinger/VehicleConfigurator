@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using DAL.Common.Interface;
 using DAL.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repository
 {

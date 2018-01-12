@@ -1,1 +1,0 @@
-INFO  2018-01-02 11:51:43,932   203ms WebApiApplication      Configuration      - Applicaton startet
