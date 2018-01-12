@@ -220,7 +220,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL.Common\DAL.Common.csproj">
-      <Project>{ade1476f-bd80-41b9-b970-a21c93f42f39}</Project>
+      <Project>{92a0dd7b-bb4f-4eba-9b43-fdbf5d35dc60}</Project>
       <Name>DAL.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\DAL\DAL.csproj">
@@ -228,7 +228,7 @@
       <Name>DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Service.Common\Service.Common.csproj">
-      <Project>{7627ab16-cc25-4c0f-ae23-9bf7f539c37f}</Project>
+      <Project>{9cc9c275-eb31-4a8a-a53b-8569f63c8ec3}</Project>
       <Name>Service.Common</Name>
     </ProjectReference>
   </ItemGroup>

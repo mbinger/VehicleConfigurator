@@ -91,12 +91,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DAL.Common\DAL.Common.csproj">
-      <Project>{ade1476f-bd80-41b9-b970-a21c93f42f39}</Project>
-      <Name>DAL.Common</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Migrations\201712211402171_InitialCreate.resx">
       <DependentUpon>201712211402171_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
@@ -107,6 +101,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Plain.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAL.Common\DAL.Common.csproj">
+      <Project>{92a0dd7b-bb4f-4eba-9b43-fdbf5d35dc60}</Project>
+      <Name>DAL.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
