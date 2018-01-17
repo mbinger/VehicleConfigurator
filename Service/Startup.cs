@@ -41,6 +41,8 @@ namespace Service
             }
 
             app.UseMvc();
+            
+            EntityFrameworkConfig.Configure(app, env);
         }
     }
 }

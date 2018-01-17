@@ -1,0 +1,42 @@
+﻿[
+  {
+    "Id": 1,
+    "Name": "Ledersessel",
+    "Description": "Ledersessel",
+    "Price": 300,
+    "Category": "Innenraum",
+    "ImageUrl": "add_skin.jpg"
+  },
+  {
+    "Id": 2,
+    "Name": "ESP",
+    "Description": "ESP Fahrdynamikregelung",
+    "Price": 200,
+    "Category": "Sicherheit",
+    "ImageUrl": "add_esp.jpg"
+  },
+  {
+    "Id": 3,
+    "Name": "Tempomat",
+    "Description": "Geschwindigkeitsregelanlage",
+    "Price": 50,
+    "Category": "Bequemlichkeit",
+    "ImageUrl": "add_cruise.jpg"
+  },
+  {
+    "Id": 4,
+    "Name": "Airbag Packet",
+    "Description": "Zusätzliches Aurbag-Packet",
+    "Price": 450,
+    "Category": "Sicherheit",
+    "ImageUrl": "add_airbag.jpg"
+  },
+  {
+    "Id": 5,
+    "Name": "Klimaanlage",
+    "Description": "Klimaanlage",
+    "Price": 399,
+    "Category": "Bequemlichkeit",
+    "ImageUrl": "add_climat_control.jpg"
+  }
+]

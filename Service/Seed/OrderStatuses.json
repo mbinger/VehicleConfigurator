@@ -1,0 +1,22 @@
+[
+  {
+    "Id": 1,
+    "Name": "Neu"
+  },
+  {
+    "Id": 2,
+    "Name": "Geändert"
+  },
+  {
+    "Id": 3,
+    "Name": "Abgesagt"
+  },
+  {
+    "Id": 4,
+    "Name": "Bearbeitung"
+  },
+  {
+    "Id": 5,
+    "Name": "Beendet"
+  }
+]
