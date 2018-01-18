@@ -10,6 +10,7 @@ using Service.Common.DataTransfer;
 
 namespace Service.Controllers
 {
+    [Route("api/[controller]")]
     public class OrderEquipmentController : Controller
     {
         public OrderEquipmentController(IRepository<OrderAdditionalEquipmentItem> repository)
@@ -37,6 +38,7 @@ namespace Service.Controllers
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
+        [HttpGet("{id}")]
         public IEnumerable<long> Get(string id, int page = 0, int pageSize = 100)
         {
             var guid = Guid.Parse(id);
@@ -52,7 +54,8 @@ namespace Service.Controllers
         /// <param name="id">order id</param>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public async Task<CudResultDto> Post(string id, [FromBody] OrderEquipmentDto dto)
+        [HttpPost("{id}")]
+        public async Task<CudResultDto> Post(string id, [FromForm] OrderEquipmentDto dto)
         {
             var result = new CudResultDto
             {

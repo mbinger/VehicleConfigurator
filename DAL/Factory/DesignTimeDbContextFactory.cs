@@ -11,17 +11,18 @@ namespace DAL.Factory
     /// </summary>
     public class DesignTimeDbContextFactory: IDesignTimeDbContextFactory<ConfigDbContext>
     {
+        public DesignTimeDbContextFactory(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
+        private readonly IConfiguration _configuration;
+
         public ConfigDbContext CreateDbContext(string[] args)
         {
-            //load configuration
-            IConfigurationRoot configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile(Def.AppSettingsFileName)
-                .Build();
-
             //use default connection string
             var builder = new DbContextOptionsBuilder<ConfigDbContext>();
-            var connectionString = configuration.GetConnectionString(Def.DefaultConnectionName);
+            var connectionString = _configuration.GetConnectionString(Def.DefaultConnectionName);
             builder.UseSqlServer(connectionString);
 
             return new ConfigDbContext(builder.Options);

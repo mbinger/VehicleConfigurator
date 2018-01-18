@@ -18,10 +18,10 @@ namespace Service.Start
     /// </summary>
     public class EntityFrameworkConfig
     {
-        public static void ConfigureServices(IServiceCollection services, IConfigurationRoot configuration)
+        public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<ConfigDbContext>(options =>
-               options.UseSqlServer(configuration.GetConnectionString(DAL.Def.DefaultConnectionName)));
+            var connectionString = configuration.GetConnectionString(DAL.Def.DefaultConnectionName);
+            services.AddDbContext<ConfigDbContext>(p=>p.UseSqlServer(connectionString));
         }
 
         public static void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -30,6 +30,7 @@ namespace Service.Start
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetRequiredService<ConfigDbContext>();
+
                 context.Database.Migrate();
 
                 //do seeding

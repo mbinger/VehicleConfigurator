@@ -59,7 +59,7 @@ namespace Service.Controllers
 
         // POST api/colors
         [HttpPost]
-        public async Task<CudResultDto> Post([FromBody] TDto value)
+        public async Task<CudResultDto> Post([FromForm] TDto value)
         {
             var result = new CudResultDto
             {
@@ -85,7 +85,7 @@ namespace Service.Controllers
 
         // PUT api/colors/5
         [HttpPut("{id}")]
-        public async Task<CudResultDto> Put(string id, [FromBody] TDto value)
+        public async Task<CudResultDto> Put(string id, [FromForm] TDto value)
         {
             var result = new CudResultDto
             {

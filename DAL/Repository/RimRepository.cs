@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using DAL.Common.Equipment;
 using DAL.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repository
 {
@@ -13,7 +14,7 @@ namespace DAL.Repository
 
       public override IQueryable<Rim> ReadAll(int? page = null, int? pageSize = null)
       {
-         return Paging(DbSet.OrderBy(p => p.Id), page, pageSize);
+         return Paging(DbSet.Include(p=>p.Type).OrderBy(p => p.Id), page, pageSize);
       }
    }
 }
