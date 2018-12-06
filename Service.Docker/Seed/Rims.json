@@ -1,0 +1,38 @@
+﻿[
+  {
+    "Id": 1,
+    "Name": "Stahlfelgen 15\"",
+    "Description": "Alufelgen 15\"",
+    "Diameter": 15,
+    "TypeId": 1,
+    "Price": 0,
+    "ImageUrl": "wheels_steel.jpg"
+  },
+  {
+    "Id": 2,
+    "Name": "Alufelgen 15\"",
+    "Description": "Alufelgen 15\"",
+    "Diameter": 15,
+    "TypeId": 2,
+    "Price": 100,
+    "ImageUrl": "wheels_alu.jpg"
+  },
+  {
+    "Id": 3,
+    "Name": "Alufelgen 17\"",
+    "Description": "Alufelgen 17\"",
+    "Diameter": 17,
+    "TypeId": 2,
+    "Price": 150,
+    "ImageUrl": "wheels_alu.jpg"
+  },
+  {
+    "Id": 4,
+    "Name": "Geschmiedete Felgen 20\"",
+    "Description": "Geschmiedete Felgen 20\"",
+    "Diameter": 20,
+    "TypeId": 3,
+    "Price": 599,
+    "ImageUrl": "wheels_forged.jpg"
+  }
+]
