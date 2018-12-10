@@ -18,6 +18,6 @@ namespace DAL.Common.Interface
       /// <param name="entity">Entity object</param>
       /// <param name="state">Entity state</param>
       /// <returns>List of errors or null/empty if ok</returns>
-      List<ValidationEntityError> Validate(object entity, ValidationEntityState state);
+      List<ValidationEntityError> Validate(IEntity entity, ValidationEntityState state);
    }
 }

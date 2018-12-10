@@ -18,8 +18,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{5
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.csproj", "{8CAF273C-74DC-4556-BF97-C7E64E28D1FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Docker", "Service.Docker\Service.Docker.csproj", "{3B99DB2A-6F27-4262-BD19-B07E62303E9C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,10 +44,6 @@ Global
 		{8CAF273C-74DC-4556-BF97-C7E64E28D1FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CAF273C-74DC-4556-BF97-C7E64E28D1FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CAF273C-74DC-4556-BF97-C7E64E28D1FA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3B99DB2A-6F27-4262-BD19-B07E62303E9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3B99DB2A-6F27-4262-BD19-B07E62303E9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3B99DB2A-6F27-4262-BD19-B07E62303E9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3B99DB2A-6F27-4262-BD19-B07E62303E9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

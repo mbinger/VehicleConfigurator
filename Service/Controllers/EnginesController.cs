@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DAL.Common.Equipment;
 using DAL.Common.Interface;
+using Microsoft.AspNetCore.Mvc;
 using Service.Common.DataTransfer;
 
 namespace Service.Controllers

@@ -39,7 +39,11 @@ namespace Service
                 Map<Rim, RimDto>();
                 Map<AdditionalEquipmentItem, AdditionalEquipmentItemDto>();
                 Map<Car, CarDto>();
-                Map<Order, OrderDto>();
+
+                CreateMap<Order, OrderDto>().ForMember(dst => dst.Id, opt => opt.MapFrom(src => src.Key));
+                CreateMap<OrderDto, Order>().ForMember(dst => dst.Id, opt => opt.Ignore())
+                    .ForMember(dst => dst.Key, opt => opt.Ignore());
+
                 Map<FuelTypeRef, FuelTypeDto>();
                 Map<RimTypeRef, RimTypeDto>();
                 Map<ColorTypeRef, ColorTypeDto>();

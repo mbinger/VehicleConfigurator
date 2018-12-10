@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using DAL.Common.Common;
+using DAL.Common.Interface;
 
 namespace DAL.Common.Reference
 {
-   public class ColorTypeRef: LongEntity
+    public class ColorTypeRef : IEntity
     {
+        [Key]
+        public long Id { get; set; }
 
-      [Required, MaxLength(Attributes.ShortTextLength)]
-      public string Name { get; set; }
-   }
+        [Required, MaxLength(Attributes.ShortTextLength)]
+        public string Name { get; set; }
+    }
 }

@@ -9,20 +9,13 @@ namespace DAL.Factory
     /// <summary>
     /// Create and configure db context for design time
     /// </summary>
-    public class DesignTimeDbContextFactory: IDesignTimeDbContextFactory<ConfigDbContext>
+    public class MigrationsDbContextFactory: IDesignTimeDbContextFactory<ConfigDbContext>
     {
-        public DesignTimeDbContextFactory(IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
-
-        private readonly IConfiguration _configuration;
-
         public ConfigDbContext CreateDbContext(string[] args)
         {
             //use default connection string
             var builder = new DbContextOptionsBuilder<ConfigDbContext>();
-            var connectionString = _configuration.GetConnectionString(Def.DefaultConnectionName);
+            var connectionString = "Server=(local);Initial catalog=VehicleConfigurator; Integrated Security=True;";
             builder.UseSqlServer(connectionString);
 
             return new ConfigDbContext(builder.Options);

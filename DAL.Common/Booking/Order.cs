@@ -1,17 +1,23 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using DAL.Common.Common;
 using DAL.Common.Equipment;
+using DAL.Common.Interface;
 using DAL.Common.Reference;
 
 namespace DAL.Common.Booking
 {
-    public class Order: GuidEntity
+    public class Order: IEntity
     {
         public Order()
         {
             DateCreatedUtc = DateTime.UtcNow;
         }
+
+        [Key]
+        public long Id { get; set; }
+
+        [Required]
+        public Guid Key { get; set; }
 
         [Required, MaxLength(Attributes.LongTextLength)]
         public string CustomerName { get; set; }

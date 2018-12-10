@@ -172,13 +172,15 @@ namespace DAL.Migrations
                 name: "Orders",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CarId = table.Column<long>(nullable: false),
                     ColorId = table.Column<long>(nullable: false),
                     CustomerName = table.Column<string>(maxLength: 2048, nullable: false),
                     DateChangedUtc = table.Column<DateTime>(nullable: true),
                     DateCreatedUtc = table.Column<DateTime>(nullable: false),
                     EngineId = table.Column<long>(nullable: false),
+                    Key = table.Column<Guid>(nullable: false),
                     RimId = table.Column<long>(nullable: false),
                     StatusId = table.Column<long>(nullable: false)
                 },
@@ -224,7 +226,7 @@ namespace DAL.Migrations
                     Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     EquipmentId = table.Column<long>(nullable: false),
-                    OrderId = table.Column<Guid>(nullable: false)
+                    OrderId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -277,6 +279,12 @@ namespace DAL.Migrations
                 name: "IX_Orders_EngineId",
                 table: "Orders",
                 column: "EngineId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_Key",
+                table: "Orders",
+                column: "Key",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_RimId",

@@ -1,13 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using DAL.Common.Common;
+using DAL.Common.Interface;
 
 namespace DAL.Common.Reference
 {
-   public class FuelTypeRef: LongEntity
+    public class FuelTypeRef : IEntity
     {
-      [Required, MaxLength(Attributes.ShortTextLength)]
-      public string Name { get; set; }
-   }
+        [Key]
+        public long Id { get; set; }
+
+        [Required, MaxLength(Attributes.ShortTextLength)]
+        public string Name { get; set; }
+    }
 }

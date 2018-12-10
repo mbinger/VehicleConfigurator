@@ -48,7 +48,10 @@ namespace DAL.Context
 
             #region Booking
 
-            modelBuilder.Entity<Order>().HasKey(p => p.Id);
+            modelBuilder.Entity<Order>().Property(p => p.Id).ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Order>().HasIndex(p => p.Key).IsUnique();
+
             modelBuilder.Entity<Order>()
                //todo:.HasOne(p => p.Car)
                .HasOne(p => p.Car)
@@ -80,7 +83,7 @@ namespace DAL.Context
                .HasForeignKey(p => p.ColorId)
                .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<OrderAdditionalEquipmentItem>().HasKey(p => p.Id);
+            modelBuilder.Entity<OrderAdditionalEquipmentItem>().Property(p => p.Id).ValueGeneratedOnAdd();
             modelBuilder.Entity<OrderAdditionalEquipmentItem>()
                .HasOne(p => p.Order)
                .WithMany()
@@ -97,24 +100,25 @@ namespace DAL.Context
 
             #region Equipment
 
-            modelBuilder.Entity<AdditionalEquipmentItem>().HasKey(p => p.Id);
-            modelBuilder.Entity<Car>().HasKey(p => p.Id);
+            modelBuilder.Entity<AdditionalEquipmentItem>().Property(p => p.Id).ValueGeneratedOnAdd();
 
-            modelBuilder.Entity<Color>().HasKey(p => p.Id);
+            modelBuilder.Entity<Car>().Property(p=>p.Id).ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Color>().Property(p => p.Id).ValueGeneratedOnAdd();
             modelBuilder.Entity<Color>()
                .HasOne(p => p.Type)
                .WithMany()
                .HasForeignKey(p => p.TypeId)
                .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<Rim>().HasKey(p => p.Id);
+            modelBuilder.Entity<Rim>().Property(p => p.Id).ValueGeneratedOnAdd();
             modelBuilder.Entity<Rim>()
                .HasOne(p => p.Type)
                .WithMany()
                .HasForeignKey(p => p.TypeId)
                .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<Engine>().HasKey(p => p.Id);
+            modelBuilder.Entity<Engine>().Property(p=>p.Id).ValueGeneratedOnAdd();
             modelBuilder.Entity<Engine>()
                .HasOne(p => p.FuelType)
                .WithMany()
@@ -125,10 +129,10 @@ namespace DAL.Context
 
             #region Reference
 
-            modelBuilder.Entity<ColorTypeRef>().HasKey(p => p.Id);
-            modelBuilder.Entity<FuelTypeRef>().HasKey(p => p.Id);
-            modelBuilder.Entity<OrderStatusRef>().HasKey(p => p.Id);
-            modelBuilder.Entity<RimTypeRef>().HasKey(p => p.Id);
+            modelBuilder.Entity<ColorTypeRef>().Property(p => p.Id).ValueGeneratedOnAdd();
+            modelBuilder.Entity<FuelTypeRef>().Property(p => p.Id).ValueGeneratedOnAdd();
+            modelBuilder.Entity<OrderStatusRef>().Property(p => p.Id).ValueGeneratedOnAdd();
+            modelBuilder.Entity<RimTypeRef>().Property(p => p.Id).ValueGeneratedOnAdd();
 
             #endregion
 

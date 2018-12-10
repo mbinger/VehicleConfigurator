@@ -14,11 +14,6 @@ namespace DAL.Repository
             DbSet = context.Orders;
         }
 
-        public override IQueryable<Order> ReadAll(int? page = null, int? pageSize = null)
-        {
-            return Paging(DbSet.OrderBy(p => p.Id), page, pageSize);
-        }
-
         public override void Update(Order entity)
         {
             entity.DateChangedUtc = DateTime.UtcNow;
@@ -28,17 +23,18 @@ namespace DAL.Repository
 
         public override void Create(Order entity)
         {
-            entity.Id = Guid.NewGuid();
             entity.DateCreatedUtc = DateTime.UtcNow;
             entity.DateChangedUtc = null;
             entity.StatusId = (long) OrderStatusId.New;
-            base.Create(entity);
-        }
 
-        public override async Task<Order> ReadByIdAsync(string id)
-        {
-            var guidId = Guid.Parse(id);
-            return await DbSet.FindAsync(guidId);
+            var generateUniqueKey = true;
+            while (generateUniqueKey)
+            {
+                entity.Key = Guid.NewGuid();
+                generateUniqueKey = Context.Orders.Any(p => p.Key == entity.Key);
+            }
+
+            base.Create(entity);
         }
     }
 }

@@ -12,9 +12,7 @@ namespace DAL.Repository
          DbSet = context.Engines;
       }
 
-      public override IQueryable<Engine> ReadAll(int? page = null, int? pageSize = null)
-      {
-         return Paging(DbSet.Include(p=>p.FuelType).OrderBy(p => p.Id), page, pageSize);
-      }
-   }
+        protected override IQueryable<Engine> Query => 
+            Context.Engines.Include(p=>p.FuelType);
+    }
 }

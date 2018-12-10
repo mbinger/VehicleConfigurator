@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DAL.Common.Equipment;
 using DAL.Common.Interface;
 using DAL.Common.Interface.Validation;
@@ -12,7 +9,7 @@ namespace DAL.Validation
 {
    public class EngineValidator : IEntityValidator
    {
-      public List<ValidationEntityError> Validate(object entity, ValidationEntityState state)
+      public List<ValidationEntityError> Validate(IEntity entity, ValidationEntityState state)
       {
          var result = new List<ValidationEntityError>();
          if (state == ValidationEntityState.Added || state == ValidationEntityState.Modified)

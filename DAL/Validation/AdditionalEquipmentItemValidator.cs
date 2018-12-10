@@ -12,7 +12,7 @@ namespace DAL.Validation
 {
    public class AdditionalEquipmentItemValidator : IEntityValidator
    {
-      public List<ValidationEntityError> Validate(object entity, ValidationEntityState state)
+      public List<ValidationEntityError> Validate(IEntity entity, ValidationEntityState state)
       {
          var result = new List<ValidationEntityError>();
          if (state == ValidationEntityState.Added || state == ValidationEntityState.Modified)

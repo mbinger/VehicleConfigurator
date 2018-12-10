@@ -12,9 +12,7 @@ namespace DAL.Repository
          DbSet = context.Rims;
       }
 
-      public override IQueryable<Rim> ReadAll(int? page = null, int? pageSize = null)
-      {
-         return Paging(DbSet.Include(p=>p.Type).OrderBy(p => p.Id), page, pageSize);
-      }
-   }
+        protected override IQueryable<Rim> Query =>
+            Context.Rims.Include(p => p.Type);
+    }
 }

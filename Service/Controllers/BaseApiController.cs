@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -18,48 +19,34 @@ namespace Service.Controllers
     {
         protected BaseApiController(IMapper mapper, IRepository<TEntity> repository)
         {
-            _mapper = mapper;
-            _repository = repository;
+            Mapper = mapper;
+            Repository = repository;
         }
 
-        private IMapper _mapper;
-        private IRepository<TEntity> _repository;
-
-        protected override void Dispose(bool disposing)
-        {
-            base.Dispose(disposing);
-            if (disposing)
-            {
-                var disposableRepository = _repository as IDisposable;
-                if (disposableRepository != null)
-                {
-                    disposableRepository.Dispose();
-                }
-                _repository = null;
-            }
-        }
+        protected IMapper Mapper;
+        protected IRepository<TEntity> Repository;
 
         // GET api/colors
         [HttpGet]
         public virtual async Task<IEnumerable<TDto>> Get(int page = 0, int pageSize = 100)
         {
-            var query = _repository.ReadAll(page, pageSize);
-            var fetched = await _repository.FetchAsync(query);
-            return fetched.Select(p => _mapper.Map<TDto>(p));
+            var query = Repository.SearchFor();
+            var fetched = await Repository.ReadAsync(query, page, pageSize);
+            return fetched.Select(p => Mapper.Map<TDto>(p));
         }
 
         // GET api/colors/5
         [HttpGet("{id}")]
-        public virtual async Task<TDto> Get(string id)
+        public virtual async Task<TDto> Get(long id)
         {
-            var entity = await _repository.ReadByIdAsync(id);
-            var dto = _mapper.Map<TDto>(entity);
+            var entity = await Repository.ReadByIdAsync(id);
+            var dto = Mapper.Map<TDto>(entity);
             return dto;
         }
 
         // POST api/colors
         [HttpPost]
-        public async Task<CudResultDto> Post([FromForm] TDto value)
+        public virtual async Task<CudResultDto> Post([FromForm] TDto value)
         {
             var result = new CudResultDto
             {
@@ -68,11 +55,11 @@ namespace Service.Controllers
 
             try
             {
-                var entity = _mapper.Map<TEntity>(value);
-                _repository.Create(entity);
-                await _repository.SaveAsync();
+                var entity = Mapper.Map<TEntity>(value);
+                Repository.Create(entity);
+                await Repository.SaveAsync();
 
-                result.Id = entity.GetGenericId();
+                result.Id = entity.Id.ToString(CultureInfo.InvariantCulture);
                 result.Success = true;
             }
             catch (DalValidationException ex)
@@ -85,7 +72,7 @@ namespace Service.Controllers
 
         // PUT api/colors/5
         [HttpPut("{id}")]
-        public async Task<CudResultDto> Put(string id, [FromForm] TDto value)
+        public virtual async Task<CudResultDto> Put(long id, [FromForm] TDto value)
         {
             var result = new CudResultDto
             {
@@ -94,12 +81,12 @@ namespace Service.Controllers
 
             try
             {
-                var entity = await _repository.ReadByIdAsync(id);
-                _mapper.Map(value, entity);
-                _repository.Update(entity);
-                await _repository.SaveAsync();
+                var entity = await Repository.ReadByIdAsync(id);
+                Mapper.Map(value, entity);
+                Repository.Update(entity);
+                await Repository.SaveAsync();
 
-                result.Id = id;
+                result.Id = id.ToString(CultureInfo.InvariantCulture);
                 result.Success = true;
             }
             catch (DalValidationException ex)
@@ -112,7 +99,7 @@ namespace Service.Controllers
 
         // DELETE api/colors/5
         [HttpDelete("{id}")]
-        public async Task<CudResultDto> Delete(string id)
+        public virtual async Task<CudResultDto> Delete(long id)
         {
             var result = new CudResultDto
             {
@@ -121,10 +108,9 @@ namespace Service.Controllers
 
             try
             {
-                await _repository.DeleteAsync(id);
-                await _repository.SaveAsync();
+                await Repository.DeleteAsync(id);
+                await Repository.SaveAsync();
 
-                result.Id = id;
                 result.Success = true;
             }
             catch (DalValidationException ex)

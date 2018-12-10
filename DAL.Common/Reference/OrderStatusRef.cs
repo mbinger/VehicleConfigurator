@@ -1,15 +1,17 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using DAL.Common.Common;
+using DAL.Common.Interface;
 
 namespace DAL.Common.Reference
 {
-   public class OrderStatusRef: LongEntity
+    public class OrderStatusRef : IEntity
     {
-
-      [Required, MaxLength(Attributes.ShortTextLength)]
-      public string Name { get; set; }
-   }
+        [Key]
+        public long Id { get; set; }
+        
+        [Required, MaxLength(Attributes.ShortTextLength)]
+        public string Name { get; set; }
+    }
 
    public enum OrderStatusId
    {

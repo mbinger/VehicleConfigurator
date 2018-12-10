@@ -11,7 +11,7 @@ using System;
 namespace DAL.Migrations
 {
     [DbContext(typeof(ConfigDbContext))]
-    [Migration("20180112143932_InitialCreate")]
+    [Migration("20181210121201_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,7 +23,7 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("DAL.Common.Booking.Order", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<long>("CarId");
@@ -40,6 +40,8 @@ namespace DAL.Migrations
 
                     b.Property<long>("EngineId");
 
+                    b.Property<Guid>("Key");
+
                     b.Property<long>("RimId");
 
                     b.Property<long>("StatusId");
@@ -51,6 +53,9 @@ namespace DAL.Migrations
                     b.HasIndex("ColorId");
 
                     b.HasIndex("EngineId");
+
+                    b.HasIndex("Key")
+                        .IsUnique();
 
                     b.HasIndex("RimId");
 
@@ -66,7 +71,7 @@ namespace DAL.Migrations
 
                     b.Property<long>("EquipmentId");
 
-                    b.Property<Guid>("OrderId");
+                    b.Property<long>("OrderId");
 
                     b.HasKey("Id");
 
